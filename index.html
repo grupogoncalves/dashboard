@@ -798,17 +798,28 @@ function bindMapInteractions(node){
   node.addEventListener("pointerleave",e=>{if(mapIsDragging&&e.buttons===0)stopDrag()});
 }
 function chooseMapView(coords,w,h){
-  const pad={left:55,right:Math.min(365,Math.max(100,w*.23)),top:105,bottom:95};
+  const pad={left:70,right:Math.min(385,Math.max(120,w*.24)),top:120,bottom:115};
   const usableW=Math.max(260,w-pad.left-pad.right),usableH=Math.max(220,h-pad.top-pad.bottom);
   const safe=coords.length?coords:[[-27.05,-49.10]];
   let zoom=7,bounds=null;
-  for(let z=12;z>=3;z--){
+
+  // Enquadramento panorâmico: prioriza mostrar a maior parte das bandeirinhas.
+  for(let z=11;z>=3;z--){
     const pts=safe.map(c=>mercatorPixel(c[0],c[1],z));
     const xs=pts.map(p=>p[0]),ys=pts.map(p=>p[1]);
     const b={minX:Math.min(...xs),maxX:Math.max(...xs),minY:Math.min(...ys),maxY:Math.max(...ys)};
-    if((b.maxX-b.minX)<=usableW*.88&&(b.maxY-b.minY)<=usableH*.82){zoom=z;bounds=b;break}
+    if((b.maxX-b.minX)<=usableW*.76&&(b.maxY-b.minY)<=usableH*.72){zoom=z;bounds=b;break}
     if(z===3){zoom=z;bounds=b}
   }
+
+  // Com várias vendas, afasta mais um nível para deixar o mapa mais aberto.
+  if(safe.length>=6 && zoom>3){
+    zoom=Math.max(3,zoom-1);
+    const pts=safe.map(c=>mercatorPixel(c[0],c[1],zoom));
+    const xs=pts.map(p=>p[0]),ys=pts.map(p=>p[1]);
+    bounds={minX:Math.min(...xs),maxX:Math.max(...xs),minY:Math.min(...ys),maxY:Math.max(...ys)};
+  }
+
   const targetCenter=[pad.left+usableW/2,pad.top+usableH/2];
   const centerWorld=[(bounds.minX+bounds.maxX)/2,(bounds.minY+bounds.maxY)/2];
   return normalizeMapView({zoom,originX:centerWorld[0]-targetCenter[0],originY:centerWorld[1]-targetCenter[1],pad}, {clientHeight:h});
