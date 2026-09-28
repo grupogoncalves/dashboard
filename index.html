@@ -314,7 +314,7 @@ body{background:radial-gradient(circle at 13% -8%,rgba(158,234,55,.11),transpare
         <div>
           <span class="map-kicker">Inteligência territorial</span>
           <h2>Mapa de Vendas</h2>
-          <p>Distribuição das vendas reais do CRM · atualiza junto com os filtros do dashboard</p>
+          <p>Distribuição das vendas reais do CRM · OpenStreetMap sem chave · <span id="mapTileStatus">online</span></p>
         </div>
         <div class="map-screen-total"><span>Faturamento no mapa</span><strong id="mapRevenue" class="mono">R$ 0</strong></div>
       </div>
@@ -336,7 +336,7 @@ body{background:radial-gradient(circle at 13% -8%,rgba(158,234,55,.11),transpare
         <div class="map-side-head compact"><div><span>Destaques</span><strong>Cidades</strong></div></div>
         <div id="cityCloud" class="city-cloud"></div>
       </aside>
-      <div class="map-credit">Mapa © OpenStreetMap contributors</div>
+      <div class="map-credit">© OpenStreetMap contributors · mapa sem API key</div>
     </section>
   </main>
   <div class="scene-progress"><i id="sceneProgressBar"></i></div>
@@ -388,7 +388,7 @@ let lastSnapshotKeys=new Set();
 let snapshotInitialized=false;
 let clientsLoaded=false,jobsLoaded=false;
 let leafletMap=null,leafletMarkers=null,leafletTileLayer=null,mapResizeObserver=null,lastMapSales=[];
-const MAP_GEOCODE_CACHE_KEY="ig-tv-map-geocode-v2";
+const MAP_GEOCODE_CACHE_KEY="ig-tv-map-geocode-v3-osm";
 let mapGeocodeCache={};try{mapGeocodeCache=JSON.parse(localStorage.getItem(MAP_GEOCODE_CACHE_KEY)||"{}")||{}}catch{}
 let geocodeQueueRunning=false;
 
@@ -623,8 +623,9 @@ function ensureLeafletMap({rebuild=false}={}){
   if(leafletMap)return true;
   if(node.clientWidth<200||node.clientHeight<200)return false;
   leafletMap=L.map(node,{zoomControl:true,attributionControl:false,preferCanvas:false,minZoom:3,maxZoom:18,zoomAnimation:false,fadeAnimation:false,markerZoomAnimation:false}).setView([-27.05,-49.10],7);
-  leafletTileLayer=L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",{subdomains:"abcd",maxZoom:20,tileSize:256,zoomOffset:0,updateWhenIdle:true,keepBuffer:4,crossOrigin:true});
+  leafletTileLayer=L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{subdomains:"abc",maxZoom:19,tileSize:256,zoomOffset:0,updateWhenIdle:true,keepBuffer:4,crossOrigin:true,attribution:"&copy; OpenStreetMap contributors"});
   leafletTileLayer.addTo(leafletMap);
+  leafletTileLayer.on("tileerror",()=>{$("mapTileStatus")&&($("mapTileStatus").textContent="Mapa carregando...")});
   leafletMarkers=L.layerGroup().addTo(leafletMap);
   if(window.ResizeObserver){mapResizeObserver=new ResizeObserver(()=>{if(sceneMode==="map"&&leafletMap)requestAnimationFrame(()=>leafletMap.invalidateSize({pan:false,animate:false}))});mapResizeObserver.observe(node)}
   return true;
@@ -670,6 +671,7 @@ function renderLeafletMarkers(sales,{fit=true,rebuild=false}={}){
   requestAnimationFrame(()=>requestAnimationFrame(resizeAndFit));
   setTimeout(resizeAndFit,350);
   setTimeout(resizeAndFit,900);
+  setTimeout(()=>{if(sceneMode==="map"){resizeAndFit();leafletMarkers?.eachLayer?.(m=>m.setZIndexOffset?.(1000));}},1600);
   geocodeUnknownSales(sales);
 }
 function renderMap(){
