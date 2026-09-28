@@ -206,6 +206,21 @@ body{background:radial-gradient(circle at 13% -8%,rgba(158,234,55,.11),transpare
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 
 @media(max-width:1050px){.map-side-panel{width:275px}.map-credit{right:310px}.map-mini-stats>div{min-width:92px}.map-screen{height:calc(100vh - 100px)}}
+
+/* MAP LIGHT DOTS */
+.osm-sale-pin{transform:translate(-50%,-50%);width:34px;height:34px;display:grid;place-items:center;filter:none}
+.osm-sale-pin:hover,.osm-sale-pin:focus-visible{transform:translate(-50%,-50%) scale(1.22);z-index:30}
+.map-light-dot{position:relative;display:block;width:8px;height:8px;border-radius:50%;background:#fff;box-shadow:0 0 7px 2px rgba(255,255,255,.72),0 0 18px 6px rgba(255,255,255,.28);animation:mapLightBlink 1.65s ease-in-out infinite}
+.map-light-dot::before,.map-light-dot::after{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;pointer-events:none}
+.map-light-dot::before{width:18px;height:18px;border:1px solid currentColor;opacity:.35;animation:mapLightRing 1.65s ease-out infinite}
+.map-light-dot::after{width:28px;height:28px;background:radial-gradient(circle,currentColor 0%,transparent 67%);opacity:.18;animation:mapLightGlow 1.65s ease-in-out infinite}
+.map-light-dot.monitoring{color:#9eea37;background:#d9ff8c;box-shadow:0 0 8px 2px rgba(158,234,55,.86),0 0 22px 7px rgba(158,234,55,.42)}
+.map-light-dot.preventive{color:#d6dee6;background:#f3f7fa;box-shadow:0 0 8px 2px rgba(214,222,230,.82),0 0 22px 7px rgba(174,184,199,.34)}
+.map-light-dot.cleaning{color:#2e9cff;background:#9bd7ff;box-shadow:0 0 8px 2px rgba(46,156,255,.88),0 0 22px 7px rgba(46,156,255,.42)}
+@keyframes mapLightBlink{0%,100%{opacity:.52;transform:scale(.78)}45%{opacity:1;transform:scale(1.18)}65%{opacity:.9;transform:scale(.96)}}
+@keyframes mapLightRing{0%{opacity:.45;transform:translate(-50%,-50%) scale(.55)}70%,100%{opacity:0;transform:translate(-50%,-50%) scale(1.55)}}
+@keyframes mapLightGlow{0%,100%{opacity:.12;transform:translate(-50%,-50%) scale(.72)}50%{opacity:.32;transform:translate(-50%,-50%) scale(1.18)}}
+
 @media(max-width:780px){.map-side-panel{display:none}.map-credit{right:10px}.map-mini-stats{left:12px;right:12px;bottom:14px;display:grid;grid-template-columns:1fr 1fr}.map-mini-stats>div{min-width:0}.map-legend-premium{left:12px;bottom:125px}.map-screen-top{left:12px;right:12px;top:12px}.map-screen-top p{display:none}.map-screen-total{display:none}.map-screen{min-height:560px;height:calc(100vh - 90px)}}
 </style>
 
@@ -514,7 +529,7 @@ function geocodeCacheKey(s){return cleanText([s.address,s.city,s.region].filter(
 function saleCoords(s,index=0){const cached=mapGeocodeCache[geocodeCacheKey(s)];let base=Array.isArray(cached)&&cached.length===2?cached:staticCityCoords(s.city);if(!base)base=REGION_COORDS[s.region]||REGION_COORDS["Outras regiões"];const h=Math.abs(hashCode(s.key||index));const angle=(h%360)*Math.PI/180;const ring=((h>>4)%5)*0.0028;return [base[0]+Math.sin(angle)*ring,base[1]+Math.cos(angle)*ring]}
 function markerKind(s){return s.kind==="monitoring"?"monitoring":s.kind==="cleaning"?"cleaning":"preventive"}
 function markerSvg(kind){if(kind==="monitoring")return `<svg viewBox="0 0 48 48"><rect x="15" y="7" width="18" height="34" rx="5" fill="none" stroke="currentColor" stroke-width="3"/><path d="M19 28l5-5 4 3 5-7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="36" r="1.8" fill="currentColor"/></svg>`;if(kind==="cleaning")return `<svg viewBox="0 0 48 48"><path d="M8 17h27l4 20H12L8 17z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M12 24h24M14 31h23M18 17l-2 20M27 17l2 20" fill="none" stroke="currentColor" stroke-width="2" opacity=".85"/><path d="M39 8l1.5 3.5L44 13l-3.5 1.5L39 18l-1.5-3.5L34 13l3.5-1.5L39 8z" fill="currentColor"/></svg>`;return `<svg viewBox="0 0 48 48"><path d="M31 8a10 10 0 0 0-10 13L8.5 33.5a4.2 4.2 0 0 0 6 6L27 27a10 10 0 0 0 13-10l-6 6-7-2-2-7 6-6z" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M32 31l7 7" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>`}
-function salePinHtml(kind){return `<div class="sale-pin ${kind}"><span>${markerSvg(kind)}</span></div>`}
+function salePinHtml(kind){return `<span class="map-light-dot ${kind}" aria-hidden="true"></span>`}
 
 function saleRegion(cityRaw){
   const c=cleanText(cityRaw);
