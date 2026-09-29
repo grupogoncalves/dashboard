@@ -533,10 +533,11 @@ body{background:radial-gradient(circle at 13% -8%,rgba(158,234,55,.11),transpare
     <label>Senha</label>
     <input id="crmPasswordInput" type="password" autocomplete="current-password" placeholder="Senha do CRM">
     <div class="settings-row">
-      <button id="saveCrmAccess" class="small-btn" type="button">Salvar acesso</button>
+      <button id="saveCrmAccess" class="small-btn" type="button">Salvar e sincronizar</button>
       <button id="openCrmReport" class="small-btn" type="button">Abrir relatório</button>
     </div>
-    <div id="crmAccessStatus" class="settings-help">Os dados ficam salvos somente neste navegador. O painel usa a sessão já autenticada do Bubble.</div>
+    <button id="syncCrmNow" class="small-btn" type="button">Sincronizar agora</button>
+    <div id="crmAccessStatus" class="settings-help">Ao salvar, o painel tenta sincronizar automaticamente usando a sessão já autenticada do CRM neste navegador.</div>
     <button id="logoutBtn" class="small-btn" type="button">Sair do painel</button>
   </div>
 </div>
@@ -575,6 +576,107 @@ try{const raw=JSON.parse(localStorage.getItem(THIRD_SALES_KEY)||"[]");if(Array.i
 function thirdSales(){return thirdCompanySales.slice().sort((a,b)=>b.date-a.date)}
 function setThirdCompanySales(rows){thirdCompanySales=(Array.isArray(rows)?rows:[]).map(x=>({...x,date:x.date instanceof Date?x.date:new Date(x.date)})).filter(x=>x.date instanceof Date&&!Number.isNaN(x.date.getTime()));try{localStorage.setItem(THIRD_SALES_KEY,JSON.stringify(thirdCompanySales))}catch{}if(sceneMode==="last")renderLastSale()}
 window.addEventListener("message",e=>{const d=e&&e.data;if(d&&d.type==="CRM_CLOSED_SALES"&&Array.isArray(d.sales))setThirdCompanySales(d.sales)});
+function parseCrmMoney(v){
+  if(typeof v==="number"&&Number.isFinite(v))return v;
+  const t=String(v||"").replace(/\s/g,"");
+  const m=t.match(/(?:R\$)?([\d.]+(?:,\d{1,2})?)/);
+  if(!m)return 0;
+  const n=Number(m[1].replace(/\./g,"").replace(",","."));
+  return Number.isFinite(n)?n:0;
+}
+function parseCrmDate(v){
+  if(v instanceof Date&&!Number.isNaN(v.getTime()))return v;
+  const t=String(v||"").trim();
+  let m=t.match(/(\d{1,2})\/(\d{1,2})\/(\d{4})(?:\s+(\d{1,2}):(\d{2}))?/);
+  if(m)return new Date(Number(m[3]),Number(m[2])-1,Number(m[1]),Number(m[4]||12),Number(m[5]||0));
+  m=t.match(/(\d{4})-(\d{2})-(\d{2})(?:[T\s](\d{2}):(\d{2}))?/);
+  if(m)return new Date(Number(m[1]),Number(m[2])-1,Number(m[3]),Number(m[4]||12),Number(m[5]||0));
+  const d=new Date(t);return Number.isNaN(d.getTime())?null:d;
+}
+function normalizeCrmSale(x){
+  if(!x||typeof x!=="object")return null;
+  const amount=parseCrmMoney(x.amount??x.valor??x.value??x.total??x.preco??x["Valor da Venda"]);
+  const date=parseCrmDate(x.date??x.data??x.data_fechamento??x.fechamento??x.created_at??x.createdAt??x["Data"]);
+  if(!amount&&!date)return null;
+  return {
+    client:String(x.client??x.cliente??x.nome??x.customer??x["Cliente"]??"Venda fechada"),
+    seller:String(x.seller??x.representante??x.vendedor??x.consultor??x["Representante"]??"Não informado"),
+    city:String(x.city??x.cidade??x["Cidade"]??""),
+    service:String(x.service??x.servico??x.tipo??x["Serviço"]??"Venda"),
+    amount,
+    date:date||new Date()
+  };
+}
+function parseCrmJson(payload){
+  let arr=[];
+  if(Array.isArray(payload))arr=payload;
+  else if(payload&&Array.isArray(payload.sales))arr=payload.sales;
+  else if(payload&&Array.isArray(payload.vendas))arr=payload.vendas;
+  else if(payload&&Array.isArray(payload.results))arr=payload.results;
+  else if(payload&&Array.isArray(payload.response))arr=payload.response;
+  return arr.map(normalizeCrmSale).filter(Boolean);
+}
+function parseCrmDocument(doc){
+  if(!doc)return [];
+  const candidates=[...doc.querySelectorAll("tr")];
+  if(!candidates.length){
+    const all=[...doc.querySelectorAll("div,li,article,section")];
+    for(const el of all){
+      const txt=(el.innerText||el.textContent||"").trim();
+      if(/R\$\s*[\d.]+,\d{2}/.test(txt)&&txt.length<1200)candidates.push(el);
+    }
+  }
+  const seen=new Set(),out=[];
+  for(const el of candidates){
+    let txt=(el.innerText||el.textContent||"").replace(/\u00a0/g," ").replace(/[ \t]+/g," ").trim();
+    if(!txt||seen.has(txt))continue;seen.add(txt);
+    const moneyMatch=txt.match(/R\$\s*[\d.]+,\d{2}/);
+    if(!moneyMatch)continue;
+    const dateMatch=txt.match(/\d{1,2}\/\d{1,2}\/\d{4}(?:\s+\d{1,2}:\d{2})?|\d{4}-\d{2}-\d{2}(?:[T\s]\d{2}:\d{2})?/);
+    const sellerMatch=txt.match(/(?:representante|vendedor|consultor)\s*[:\-]?\s*([^\n|•]+)/i);
+    const cityMatch=txt.match(/(?:cidade)\s*[:\-]?\s*([^\n|•]+)/i);
+    const clientMatch=txt.match(/(?:cliente|nome)\s*[:\-]?\s*([^\n|•]+)/i);
+    const lines=txt.split(/\n|\||•/).map(x=>x.trim()).filter(Boolean);
+    let client=clientMatch?.[1]?.trim();
+    if(!client)client=lines.find(x=>!/^R\$/i.test(x)&&!/representante|vendedor|consultor|cidade|valor|data|contrato|projeto/i.test(x)&&!/^\d{1,2}\/\d{1,2}\/\d{4}/.test(x))||"Venda fechada";
+    out.push({client,seller:sellerMatch?.[1]?.trim()||"Não informado",city:cityMatch?.[1]?.trim()||"",service:"Venda",amount:parseCrmMoney(moneyMatch[0]),date:parseCrmDate(dateMatch?.[0])||new Date()});
+  }
+  const uniq=new Map();
+  for(const x of out){const k=[x.client,x.seller,x.amount,x.date?.toISOString().slice(0,10)].join("|");if(!uniq.has(k))uniq.set(k,x)}
+  return [...uniq.values()];
+}
+let crmSyncBusy=false;
+async function syncCrmReport({quiet=false}={}){
+  if(crmSyncBusy)return false;crmSyncBusy=true;
+  const url=String(crmAccess.url||DEFAULT_CRM_REPORT_URL).trim()||DEFAULT_CRM_REPORT_URL;
+  const status=$("crmAccessStatus"),source=$("contractSourceStatus");
+  if(!quiet){if(status)status.textContent="Sincronizando relatório...";if(source)source.textContent="Sincronizando CRM..."}
+  try{
+    const bridge=$("crmReportBridge");
+    if(bridge){
+      try{
+        const doc=bridge.contentDocument||bridge.contentWindow?.document;
+        const rows=parseCrmDocument(doc);
+        if(rows.length){setThirdCompanySales(rows);if(status)status.textContent=`Sincronizado: ${rows.length} vendas fechadas.`;if(source)source.textContent="Dados CRM carregados";return true}
+      }catch{}
+    }
+    const res=await fetch(url,{method:"GET",credentials:"include",cache:"no-store",headers:{"Accept":"text/html,application/json"}});
+    if(!res.ok)throw new Error(`HTTP ${res.status}`);
+    const ct=(res.headers.get("content-type")||"").toLowerCase();
+    let rows=[];
+    if(ct.includes("application/json")){rows=parseCrmJson(await res.json())}
+    else{const html=await res.text();rows=parseCrmDocument(new DOMParser().parseFromString(html,"text/html"))}
+    if(rows.length){setThirdCompanySales(rows);if(status)status.textContent=`Sincronizado: ${rows.length} vendas fechadas.`;if(source)source.textContent="Dados CRM carregados";return true}
+    if(status)status.textContent="O link foi acessado, mas os dados do relatório não vieram no HTML. Deixe o CRM logado e abra o relatório uma vez.";
+    if(source)source.textContent="Aguardando dados do CRM";
+    return false;
+  }catch(err){
+    if(status)status.textContent="Não foi possível ler o relatório diretamente. O navegador bloqueou a leitura entre domínios (CORS). O CRM pode continuar aberto/logado, mas para extrair os dados é necessário um endpoint/proxy de sincronização.";
+    if(source)source.textContent="Sincronização bloqueada";
+    console.warn("CRM sync",err);return false;
+  }finally{crmSyncBusy=false}
+}
+
 let sceneDurations={overview:120,map:120,last:120};
 try{const saved=JSON.parse(localStorage.getItem(SCENE_DURATIONS_KEY)||"null");if(saved){for(const k of ["overview","map","last"]){const n=Number(saved[k]);if(Number.isFinite(n)&&n>=5)sceneDurations[k]=Math.min(3600,Math.round(n))}}}catch{}
 let saleAlertQueue=[],saleAlertActive=false,saleAlertTimer=null,saleCountdownTimer=null;
@@ -1190,16 +1292,18 @@ function applyCrmAccess(){
   if($("crmUserInput"))$("crmUserInput").value=crmAccess.user||"";
   if($("crmPasswordInput"))$("crmPasswordInput").value=crmAccess.password||"";
 }
-function saveCrmAccess(){
+async function saveCrmAccess(){
   const url=String($("crmReportUrlInput")?.value||"").trim()||DEFAULT_CRM_REPORT_URL;
   crmAccess={url,user:String($("crmUserInput")?.value||"").trim(),password:String($("crmPasswordInput")?.value||"")};
   localStorage.setItem(CRM_ACCESS_KEY,JSON.stringify(crmAccess));
   applyCrmAccess();
-  if($("crmAccessStatus"))$("crmAccessStatus").textContent="Acesso salvo neste navegador. Abra o CRM uma vez e mantenha a sessão autenticada.";
+  if($("crmAccessStatus"))$("crmAccessStatus").textContent="Acesso salvo. Sincronizando automaticamente...";
+  await syncCrmReport();
 }
-function openCrmReport(){
-  saveCrmAccess();
+async function openCrmReport(){
+  await saveCrmAccess();
   window.open(crmAccess.url||DEFAULT_CRM_REPORT_URL,"_blank","noopener");
+  setTimeout(()=>syncCrmReport(),5000);
 }
 function showDashboard(){$("loginScreen").classList.add("hidden");$("dashboard").classList.remove("hidden");$("settings").classList.remove("hidden");$("goalInput").value=goal;syncDurationInputs();applyCrmAccess();sceneMode="overview";updateClock();render();setScene("overview",{restartTimer:false});setAutoMode(true)}
 function showLogin(){$("dashboard").classList.add("hidden");$("settings").classList.add("hidden");$("loginScreen").classList.remove("hidden")}
@@ -1218,6 +1322,9 @@ $("applyDurations").addEventListener("click",()=>{
 });
 $("saveCrmAccess")?.addEventListener("click",saveCrmAccess);
 $("openCrmReport")?.addEventListener("click",openCrmReport);
+$("syncCrmNow")?.addEventListener("click",()=>syncCrmReport());
+$("crmReportBridge")?.addEventListener("load",()=>setTimeout(()=>syncCrmReport({quiet:true}),700));
+setInterval(()=>syncCrmReport({quiet:true}),60000);
 $("logoutBtn").addEventListener("click",()=>authApi.signOut(auth));
 $("filterButtons").addEventListener("click",e=>{const b=e.target.closest('.filter-btn');if(b)applyFilter(b.dataset.filter)});
 $("periodFilter").addEventListener("change",e=>{periodFilter=e.target.value;render()});
