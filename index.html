@@ -128,7 +128,7 @@ button,input{font:inherit}.hidden{display:none!important}.mono{font-variant-nume
 
 /* SETTINGS / LOGIN */
 .login{min-height:100vh;display:grid;place-items:center;padding:28px}.login-card{width:min(470px,100%);padding:30px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(145deg,#102516,#09190c);box-shadow:var(--shadow)}.login-brand{text-align:center}.login-brand .brand-mark{margin:0 auto 15px;height:82px}.login-brand .brand-mark img{height:82px;max-width:360px}.login-brand h2{margin:0;text-transform:uppercase;letter-spacing:1px}.login-brand p{color:var(--muted);font-size:11px;line-height:1.55}.field{display:grid;gap:7px;margin-top:13px}.field label{font-size:9px;color:var(--muted);text-transform:uppercase;font-weight:900;letter-spacing:.8px}.field input{width:100%;border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:13px 14px;background:#08140a;color:#fff;outline:none}.field input:focus{border-color:var(--lime);box-shadow:0 0 0 4px rgba(200,223,34,.08)}.primary-btn{width:100%;border:0;border-radius:999px;padding:13px 16px;margin-top:17px;background:linear-gradient(135deg,var(--lime-soft),var(--lime));color:#08220b;font-weight:950;cursor:pointer}.login-msg{min-height:18px;margin-top:11px;color:var(--orange);font-size:10px;text-align:center}
-.settings{position:fixed;right:18px;bottom:18px;z-index:40}.settings-toggle{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:#102516;color:#dce8df;cursor:pointer;box-shadow:var(--shadow)}.settings-panel{position:absolute;right:0;bottom:52px;width:285px;padding:16px;border:1px solid var(--line);border-radius:16px;background:#0c1d10;box-shadow:var(--shadow)}.settings-panel strong{font-size:12px}.settings-panel label{display:block;color:var(--muted);font-size:8px;text-transform:uppercase;font-weight:900;margin:11px 0 6px}.settings-panel input{width:100%;padding:9px 10px;border-radius:9px;border:1px solid rgba(255,255,255,.1);background:#08140a;color:#fff}.small-btn{width:100%;margin-top:9px;padding:9px;border:0;border-radius:9px;background:rgba(200,223,34,.11);color:var(--lime-soft);font-weight:900;cursor:pointer}
+.settings{position:fixed;right:18px;bottom:18px;z-index:40}.settings-toggle{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:#102516;color:#dce8df;cursor:pointer;box-shadow:var(--shadow)}.settings-panel{position:absolute;right:0;bottom:52px;width:340px;max-height:min(78vh,760px);overflow:auto;padding:16px;border:1px solid var(--line);border-radius:16px;background:#0c1d10;box-shadow:var(--shadow)}.settings-panel strong{font-size:12px}.settings-panel label{display:block;color:var(--muted);font-size:8px;text-transform:uppercase;font-weight:900;margin:11px 0 6px}.settings-panel input{width:100%;padding:9px 10px;border-radius:9px;border:1px solid rgba(255,255,255,.1);background:#08140a;color:#fff}.small-btn{width:100%;margin-top:9px;padding:9px;border:0;border-radius:9px;background:rgba(200,223,34,.11);color:var(--lime-soft);font-weight:900;cursor:pointer}.settings-help{font-size:8px;line-height:1.45;color:var(--muted);margin-top:7px}.settings-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}.settings-panel input[type=password]{letter-spacing:.08em}
 .footer{display:flex;justify-content:space-between;gap:14px;align-items:center;margin-top:11px;color:#607266;font-size:8px;text-transform:uppercase;letter-spacing:1px}.ticker{overflow:hidden;white-space:nowrap;max-width:64%}.ticker span{display:inline-block;animation:ticker 20s linear infinite}@keyframes ticker{from{transform:translateX(16%)}to{transform:translateX(-100%)}}
 
 
@@ -195,6 +195,17 @@ body{background:radial-gradient(circle at 13% -8%,rgba(158,234,55,.11),transpare
 .login-card{background:linear-gradient(145deg,rgba(16,24,33,.98),rgba(7,11,16,.99));border-color:rgba(156,182,204,.13)}
 .settings-toggle,.settings-panel{background:#0d141c;border-color:rgba(154,180,201,.13)}
 .scene-badge{background:linear-gradient(145deg,rgba(18,27,36,.92),rgba(10,16,22,.92));color:#d6e0e8}
+
+/* CRM REPORT SCREEN */
+.crm-report-screen{position:relative;height:calc(100vh - 116px);min-height:650px;border:1px solid rgba(135,158,179,.14);border-radius:28px;overflow:hidden;background:#081018;box-shadow:0 34px 110px rgba(0,0,0,.45)}
+.crm-report-frame{position:absolute;inset:0;width:100%;height:100%;border:0;background:#fff}
+.crm-report-top{position:absolute;z-index:20;left:18px;right:18px;top:16px;display:flex;align-items:center;justify-content:space-between;gap:14px;pointer-events:none}
+.crm-report-top>div{padding:10px 14px;border-radius:15px;border:1px solid rgba(255,255,255,.12);background:rgba(6,12,18,.88);backdrop-filter:blur(14px);box-shadow:0 12px 34px rgba(0,0,0,.28)}
+.crm-report-top span{display:block;font-size:8px;color:#9eea37;font-weight:900;letter-spacing:1.25px;text-transform:uppercase}.crm-report-top strong{display:block;margin-top:3px;font-size:17px;color:#fff}
+.crm-report-open{pointer-events:auto;text-decoration:none;padding:10px 14px;border-radius:999px;border:1px solid rgba(158,234,55,.28);background:rgba(8,15,20,.90);color:#d9ff87;font-size:9px;font-weight:950;letter-spacing:.7px;text-transform:uppercase;box-shadow:0 12px 34px rgba(0,0,0,.24)}
+.crm-report-open:hover{background:rgba(158,234,55,.10);border-color:rgba(158,234,55,.45)}
+.crm-report-note{position:absolute;z-index:20;left:18px;bottom:14px;max-width:min(760px,calc(100% - 36px));padding:8px 11px;border-radius:11px;background:rgba(6,12,18,.78);border:1px solid rgba(255,255,255,.09);color:#9eb0bd;font-size:8px;letter-spacing:.35px;backdrop-filter:blur(10px);pointer-events:none}
+@media(max-width:780px){.crm-report-screen{height:calc(100vh - 90px);min-height:560px}.crm-report-top{left:10px;right:10px;top:10px}.crm-report-top>div{display:none}.crm-report-note{left:10px;bottom:10px;max-width:calc(100% - 20px)}}
 
 /* TV scenes */
 .tv-scene{display:none;opacity:0;transform:translateY(8px);transition:opacity .55s ease,transform .55s ease}.tv-scene.active{display:block;opacity:1;transform:none}.map-scene.active{display:block}.scene-progress{position:fixed;left:0;right:0;bottom:0;height:3px;z-index:1200;background:rgba(255,255,255,.035);overflow:hidden}.scene-progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--lime),var(--blue));box-shadow:0 0 16px rgba(97,188,255,.45)}.scene-progress i.running{animation-name:sceneCountdown;animation-timing-function:linear;animation-fill-mode:forwards}@keyframes sceneCountdown{from{width:0}to{width:100%}}
@@ -424,29 +435,16 @@ body{background:radial-gradient(circle at 13% -8%,rgba(158,234,55,.11),transpare
   </main>
 
   <main id="lastSaleScene" class="tv-scene" aria-hidden="true">
-    <section id="lastSaleScreen" class="last-sale-screen no-sale">
-      <div class="last-sale-wrap">
-        <div class="last-sale-kicker"><i></i> Comercial em tempo real</div>
-        <h2 class="last-sale-headline">Última venda fechada</h2>
-        <div id="lastSaleAge" class="last-sale-age">Aguardando venda<small>tempo desde o último fechamento</small></div>
-        <div id="lastSaleEmpty" class="last-sale-empty">Assim que uma venda for confirmada no CRM, ela aparecerá aqui.</div>
-        <div class="last-sale-card">
-          <div class="last-sale-primary">
-            <div class="last-sale-label">Cliente</div>
-            <div id="lastSaleClient" class="last-sale-client">—</div>
-            <div id="lastSaleService" class="last-sale-service">—</div>
-            <div class="last-sale-details">
-              <span>Representante: <b id="lastSaleSeller">—</b></span>
-              <span>Cidade: <b id="lastSaleCity">—</b></span>
-            </div>
-          </div>
-          <div class="last-sale-valuebox">
-            <div class="last-sale-label">Valor da venda</div>
-            <div id="lastSaleValue" class="last-sale-value mono">R$ 0,00</div>
-            <div id="lastSaleDate" class="last-sale-date">—</div>
-          </div>
+    <section class="crm-report-screen">
+      <div class="crm-report-top">
+        <div>
+          <span>CRM IG · relatório de vendas</span>
+          <strong>Clientes vendidos</strong>
         </div>
+        <a class="crm-report-open" href="https://crmtesteig1.bubbleapps.io/relatorios_ig_crm?d.inicial=Sep%201%2C%202026%2012%3A00%20am&d.final=Sep%2029%2C%202026%2012%3A59%20pm&relatorio=projeto_contrato" target="_blank" rel="noopener">Abrir relatório</a>
       </div>
+      <iframe id="crmReportFrame" class="crm-report-frame" title="Relatório de clientes vendidos do CRM IG" referrerpolicy="strict-origin-when-cross-origin" src="https://crmtesteig1.bubbleapps.io/relatorios_ig_crm?d.inicial=Sep%201%2C%202026%2012%3A00%20am&d.final=Sep%2029%2C%202026%2012%3A59%20pm&relatorio=projeto_contrato"></iframe>
+      <div class="crm-report-note">Use o mesmo navegador com o CRM já autenticado. Se o Bubble bloquear a exibição incorporada, use “Abrir relatório”.</div>
     </section>
   </main>
 
@@ -491,9 +489,22 @@ body{background:radial-gradient(circle at 13% -8%,rgba(158,234,55,.11),transpare
     <input id="overviewDurationInput" type="number" min="5" max="3600" step="5" value="120">
     <label>Mapa de vendas (segundos)</label>
     <input id="mapDurationInput" type="number" min="5" max="3600" step="5" value="120">
-    <label>Última venda (segundos)</label>
+    <label>Relatório CRM (segundos)</label>
     <input id="lastDurationInput" type="number" min="5" max="3600" step="5" value="120">
     <button id="applyDurations" class="small-btn" type="button">Salvar tempos</button>
+    <div style="height:1px;background:rgba(255,255,255,.08);margin:14px 0 10px"></div>
+    <strong style="display:block;margin-bottom:2px">Acesso ao relatório CRM</strong>
+    <label>Link do relatório</label>
+    <input id="crmReportUrlInput" type="url" autocomplete="off" placeholder="https://crmtesteig1.bubbleapps.io/...">
+    <label>Usuário / e-mail</label>
+    <input id="crmUserInput" type="text" autocomplete="username" placeholder="usuario@empresa.com">
+    <label>Senha</label>
+    <input id="crmPasswordInput" type="password" autocomplete="current-password" placeholder="Senha do CRM">
+    <div class="settings-row">
+      <button id="saveCrmAccess" class="small-btn" type="button">Salvar acesso</button>
+      <button id="openCrmReport" class="small-btn" type="button">Abrir relatório</button>
+    </div>
+    <div id="crmAccessStatus" class="settings-help">Os dados ficam salvos somente neste navegador. O painel usa a sessão já autenticada do Bubble.</div>
     <button id="logoutBtn" class="small-btn" type="button">Sair do painel</button>
   </div>
 </div>
@@ -522,6 +533,10 @@ let autoMode=false;
 let autoTimer=null;
 let sceneMode="overview";
 const SCENE_DURATIONS_KEY="group-tv-scene-durations-v1";
+const CRM_ACCESS_KEY="group-tv-crm-access-v1";
+const DEFAULT_CRM_REPORT_URL="https://crmtesteig1.bubbleapps.io/relatorios_ig_crm?d.inicial=Sep%201%2C%202026%2012%3A00%20am&d.final=Sep%2029%2C%202026%2012%3A59%20pm&relatorio=projeto_contrato";
+let crmAccess={url:DEFAULT_CRM_REPORT_URL,user:"",password:""};
+try{const savedCrm=JSON.parse(localStorage.getItem(CRM_ACCESS_KEY)||"null");if(savedCrm&&typeof savedCrm==="object")crmAccess={...crmAccess,...savedCrm}}catch{}
 let sceneDurations={overview:120,map:120,last:120};
 try{const saved=JSON.parse(localStorage.getItem(SCENE_DURATIONS_KEY)||"null");if(saved){for(const k of ["overview","map","last"]){const n=Number(saved[k]);if(Number.isFinite(n)&&n>=5)sceneDurations[k]=Math.min(3600,Math.round(n))}}}catch{}
 let saleAlertQueue=[],saleAlertActive=false,saleAlertTimer=null,saleCountdownTimer=null;
@@ -1031,9 +1046,9 @@ function setScene(mode,{restartTimer=true}={}){
   $("lastSaleScene").classList.toggle("active",sceneMode==="last");
   $("mapScene").setAttribute("aria-hidden",sceneMode==="map"?"false":"true");
   $("lastSaleScene").setAttribute("aria-hidden",sceneMode==="last"?"false":"true");
-  const names={overview:"Dashboard",map:"Mapa",last:"Última venda"};$("sceneBadge").textContent=`${names[sceneMode]} · ${sceneDurationLabel(sceneDurationSeconds())}`;
-  const icons={overview:"🗺",map:"★",last:"▣"};$("sceneBtn").textContent=icons[sceneMode];
-  const titles={overview:"Abrir mapa de vendas",map:"Ver última venda fechada",last:"Voltar para o dashboard"};$("sceneBtn").title=titles[sceneMode];
+  const names={overview:"Dashboard",map:"Mapa",last:"Relatório CRM"};$("sceneBadge").textContent=`${names[sceneMode]} · ${sceneDurationLabel(sceneDurationSeconds())}`;
+  const icons={overview:"🗺",map:"▤",last:"▣"};$("sceneBtn").textContent=icons[sceneMode];
+  const titles={overview:"Abrir mapa de vendas",map:"Abrir relatório do CRM",last:"Voltar para o dashboard"};$("sceneBtn").title=titles[sceneMode];
   if(sceneMode==="map"){setTimeout(()=>renderLeafletMarkers(filteredSales(),{fit:true,rebuild:true}),220);setTimeout(()=>renderLeafletMarkers(filteredSales(),{fit:true}),900)}
   if(sceneMode==="last")renderLastSale();
   resetSceneProgress();
@@ -1096,7 +1111,28 @@ function subscribe(){
   },connectionError);
 }
 function connectionError(e){$("liveText").textContent="Falha na base real";$("loginMsg").textContent=e?.message||"Erro de conexão com o Realtime Database"}
-function showDashboard(){$("loginScreen").classList.add("hidden");$("dashboard").classList.remove("hidden");$("settings").classList.remove("hidden");$("goalInput").value=goal;syncDurationInputs();sceneMode="overview";updateClock();render();setScene("overview",{restartTimer:false});setAutoMode(true)}
+function applyCrmAccess(){
+  const url=String(crmAccess.url||DEFAULT_CRM_REPORT_URL).trim()||DEFAULT_CRM_REPORT_URL;
+  const frame=$("crmReportFrame");
+  const openLink=document.querySelector(".crm-report-open");
+  if(frame&&frame.src!==url)frame.src=url;
+  if(openLink)openLink.href=url;
+  if($("crmReportUrlInput"))$("crmReportUrlInput").value=url;
+  if($("crmUserInput"))$("crmUserInput").value=crmAccess.user||"";
+  if($("crmPasswordInput"))$("crmPasswordInput").value=crmAccess.password||"";
+}
+function saveCrmAccess(){
+  const url=String($("crmReportUrlInput")?.value||"").trim()||DEFAULT_CRM_REPORT_URL;
+  crmAccess={url,user:String($("crmUserInput")?.value||"").trim(),password:String($("crmPasswordInput")?.value||"")};
+  localStorage.setItem(CRM_ACCESS_KEY,JSON.stringify(crmAccess));
+  applyCrmAccess();
+  if($("crmAccessStatus"))$("crmAccessStatus").textContent="Acesso salvo neste navegador. Abra o CRM uma vez e mantenha a sessão autenticada.";
+}
+function openCrmReport(){
+  saveCrmAccess();
+  window.open(crmAccess.url||DEFAULT_CRM_REPORT_URL,"_blank","noopener");
+}
+function showDashboard(){$("loginScreen").classList.add("hidden");$("dashboard").classList.remove("hidden");$("settings").classList.remove("hidden");$("goalInput").value=goal;syncDurationInputs();applyCrmAccess();sceneMode="overview";updateClock();render();setScene("overview",{restartTimer:false});setAutoMode(true)}
 function showLogin(){$("dashboard").classList.add("hidden");$("settings").classList.add("hidden");$("loginScreen").classList.remove("hidden")}
 
 $("loginForm").addEventListener("submit",async e=>{e.preventDefault();$("loginMsg").textContent="Conectando...";try{await authApi.signInWithEmailAndPassword(auth,$("email").value.trim(),$("password").value);$("loginMsg").textContent=""}catch(err){$("loginMsg").textContent="Login não autorizado. Confira e-mail e senha."}});
@@ -1111,6 +1147,8 @@ $("applyDurations").addEventListener("click",()=>{
   setScene(sceneMode);
   $("settingsPanel").classList.add("hidden");
 });
+$("saveCrmAccess")?.addEventListener("click",saveCrmAccess);
+$("openCrmReport")?.addEventListener("click",openCrmReport);
 $("logoutBtn").addEventListener("click",()=>authApi.signOut(auth));
 $("filterButtons").addEventListener("click",e=>{const b=e.target.closest('.filter-btn');if(b)applyFilter(b.dataset.filter)});
 $("periodFilter").addEventListener("change",e=>{periodFilter=e.target.value;render()});
