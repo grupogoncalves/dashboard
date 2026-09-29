@@ -223,6 +223,24 @@ body{background:radial-gradient(circle at 13% -8%,rgba(158,234,55,.11),transpare
 @keyframes mapLightGlow{0%,100%{opacity:.12;transform:translate(-50%,-50%) scale(.72)}50%{opacity:.32;transform:translate(-50%,-50%) scale(1.18)}}
 
 @media(max-width:780px){.map-side-panel{display:none}.map-credit{right:10px}.map-mini-stats{left:12px;right:12px;bottom:14px;display:grid;grid-template-columns:1fr 1fr}.map-mini-stats>div{min-width:0}.map-legend-premium{left:12px;bottom:125px}.map-screen-top{left:12px;right:12px;top:12px}.map-screen-top p{display:none}.map-screen-total{display:none}.map-screen{min-height:560px;height:calc(100vh - 90px)}}
+
+/* THIRD TV SCREEN · LAST CLOSED SALE */
+.last-sale-screen{position:relative;height:calc(100vh - 116px);min-height:650px;border:1px solid rgba(158,234,55,.18);border-radius:30px;overflow:hidden;background:radial-gradient(circle at 50% 34%,rgba(158,234,55,.16),transparent 28%),radial-gradient(circle at 88% 14%,rgba(46,156,255,.11),transparent 27%),linear-gradient(145deg,#071009 0%,#071016 52%,#04070a 100%);box-shadow:0 34px 120px rgba(0,0,0,.50),inset 0 1px 0 rgba(255,255,255,.03);display:grid;place-items:center;padding:44px}
+.last-sale-screen:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:54px 54px;mask-image:radial-gradient(circle at center,#000,transparent 78%);pointer-events:none}
+.last-sale-screen:after{content:"";position:absolute;width:620px;height:620px;border-radius:50%;border:1px solid rgba(158,234,55,.10);box-shadow:0 0 0 70px rgba(158,234,55,.025),0 0 0 140px rgba(46,156,255,.018);animation:lastSaleHalo 5s ease-in-out infinite;pointer-events:none}@keyframes lastSaleHalo{50%{transform:scale(1.05);opacity:.72}}
+.last-sale-wrap{position:relative;z-index:2;width:min(1500px,94vw);text-align:center}
+.last-sale-kicker{display:inline-flex;align-items:center;gap:11px;padding:10px 16px;border-radius:999px;border:1px solid rgba(158,234,55,.20);background:rgba(158,234,55,.07);color:#d4ff85;font-size:13px;font-weight:1000;letter-spacing:2.6px;text-transform:uppercase}.last-sale-kicker i{width:10px;height:10px;border-radius:50%;background:var(--lime);box-shadow:0 0 24px var(--lime);animation:livePulse 1.8s infinite}
+.last-sale-headline{margin:23px 0 0;font-size:clamp(58px,7vw,118px);line-height:.9;letter-spacing:-5px;text-transform:uppercase;font-weight:1000;background:linear-gradient(180deg,#fff 18%,#d8e6ee 72%,#9fb0bd);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 20px 55px rgba(0,0,0,.30)}
+.last-sale-age{margin-top:24px;font-size:clamp(36px,4vw,68px);font-weight:1000;letter-spacing:-2.2px;color:var(--lime-soft)}
+.last-sale-age small{display:block;margin-top:7px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#7f919f;font-weight:900}
+.last-sale-card{margin:34px auto 0;width:min(1180px,94%);display:grid;grid-template-columns:1.15fr .8fr;gap:18px;text-align:left}
+.last-sale-primary,.last-sale-valuebox{border:1px solid rgba(255,255,255,.09);border-radius:24px;background:linear-gradient(145deg,rgba(18,27,36,.86),rgba(8,13,18,.92));box-shadow:0 22px 65px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.035);padding:24px 28px}
+.last-sale-label{font-size:9px;color:#8294a2;font-weight:900;text-transform:uppercase;letter-spacing:1.5px}.last-sale-client{font-size:clamp(26px,3vw,46px);font-weight:1000;letter-spacing:-1.5px;margin-top:7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.last-sale-service{display:inline-flex;margin-top:13px;padding:7px 11px;border-radius:999px;background:rgba(158,234,55,.08);border:1px solid rgba(158,234,55,.15);color:#ceff72;font-size:11px;font-weight:950;text-transform:uppercase;letter-spacing:.7px}
+.last-sale-details{display:flex;gap:10px;flex-wrap:wrap;margin-top:17px}.last-sale-details span{padding:8px 10px;border-radius:10px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.05);font-size:11px;color:#adbbc5}.last-sale-details b{color:#fff}
+.last-sale-valuebox{display:flex;flex-direction:column;justify-content:center;text-align:right;background:radial-gradient(circle at 100% 0%,rgba(158,234,55,.10),transparent 45%),linear-gradient(145deg,rgba(16,25,32,.90),rgba(8,13,18,.94))}.last-sale-value{font-size:clamp(42px,5vw,76px);line-height:1;font-weight:1000;letter-spacing:-3px;color:#fff;margin-top:8px}.last-sale-date{font-size:13px;color:#a4b3bd;margin-top:12px;font-weight:800}
+.last-sale-empty{font-size:26px;color:#83939f;margin-top:30px}.last-sale-screen.no-sale .last-sale-card{display:none}.last-sale-screen.no-sale .last-sale-age{color:#8b9ba6}
+@media(max-width:900px){.last-sale-screen{padding:24px;min-height:560px}.last-sale-card{grid-template-columns:1fr}.last-sale-valuebox{text-align:left}.last-sale-headline{letter-spacing:-2px}}
+
 </style>
 
 </head>
@@ -404,6 +422,34 @@ body{background:radial-gradient(circle at 13% -8%,rgba(158,234,55,.11),transpare
       <div class="map-credit">© OpenStreetMap contributors · mapa sem API key</div>
     </section>
   </main>
+
+  <main id="lastSaleScene" class="tv-scene" aria-hidden="true">
+    <section id="lastSaleScreen" class="last-sale-screen no-sale">
+      <div class="last-sale-wrap">
+        <div class="last-sale-kicker"><i></i> Comercial em tempo real</div>
+        <h2 class="last-sale-headline">Última venda fechada</h2>
+        <div id="lastSaleAge" class="last-sale-age">Aguardando venda<small>tempo desde o último fechamento</small></div>
+        <div id="lastSaleEmpty" class="last-sale-empty">Assim que uma venda for confirmada no CRM, ela aparecerá aqui.</div>
+        <div class="last-sale-card">
+          <div class="last-sale-primary">
+            <div class="last-sale-label">Cliente</div>
+            <div id="lastSaleClient" class="last-sale-client">—</div>
+            <div id="lastSaleService" class="last-sale-service">—</div>
+            <div class="last-sale-details">
+              <span>Representante: <b id="lastSaleSeller">—</b></span>
+              <span>Cidade: <b id="lastSaleCity">—</b></span>
+            </div>
+          </div>
+          <div class="last-sale-valuebox">
+            <div class="last-sale-label">Valor da venda</div>
+            <div id="lastSaleValue" class="last-sale-value mono">R$ 0,00</div>
+            <div id="lastSaleDate" class="last-sale-date">—</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
   <div class="scene-progress"><i id="sceneProgressBar"></i></div>
 </div>
 
@@ -641,7 +687,7 @@ function render(){
   const pct=goal>0?Math.min(999,revenue/goal*100):0;
   $("goalPct").textContent=`${pct.toFixed(0)}%`; $("goalLabel").textContent=money(goal); $("goalRing").style.setProperty("--pct",`${Math.min(100,pct)*3.6}deg`);
 
-  renderTrend(); renderRanking(); renderFeed(); renderMap(); populateFilters(); updateFilterNote();
+  renderTrend(); renderRanking(); renderFeed(); renderMap(); renderLastSale(); populateFilters(); updateFilterNote();
   $("lastSync").textContent=`Última sincronização: ${new Date().toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit",second:"2-digit"})}`;
   detectNewSale();
 }
@@ -940,25 +986,46 @@ function hideSaleAlert(){
   setTimeout(()=>{if(saleAlertQueue.length)showNextSaleAlert();else if(autoMode){resetSceneProgress();clearInterval(autoTimer);autoTimer=setInterval(cycleAuto,120000)}},500);
 }
 
-function updateClock(){const n=new Date();$("clock").textContent=n.toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit"});$("dateLabel").textContent=n.toLocaleDateString("pt-BR",{weekday:"long",day:"2-digit",month:"long"})}
+
+function latestClosedSale(){
+  return getAllSales().filter(s=>s?.date instanceof Date&&!Number.isNaN(s.date.getTime())).slice().sort((a,b)=>b.date-a.date)[0]||null;
+}
+function lastSaleAgeText(date){
+  const diff=Math.max(0,Date.now()-date.getTime()),mins=Math.floor(diff/60000);
+  if(mins<1)return "AGORA";
+  if(mins<60)return `HÁ ${mins} MINUTO${mins===1?"":"S"}`;
+  const hours=Math.floor(mins/60);if(hours<24)return `HÁ ${hours} HORA${hours===1?"":"S"}`;
+  const days=Math.floor(hours/24);return `HÁ ${days} DIA${days===1?"":"S"}`;
+}
+function renderLastSale(){
+  const sale=latestClosedSale(),screen=$("lastSaleScreen");if(!screen)return;
+  screen.classList.toggle("no-sale",!sale);$("lastSaleEmpty").style.display=sale?"none":"block";
+  if(!sale){$("lastSaleAge").innerHTML='Aguardando venda<small>tempo desde o último fechamento</small>';return}
+  $("lastSaleClient").textContent=sale.name||"Cliente";$("lastSaleService").textContent=sale.label||"Venda";$("lastSaleSeller").textContent=sale.seller||"Não informado";$("lastSaleCity").textContent=sale.city||"Não informada";$("lastSaleValue").textContent=money2(sale.amount||0);
+  $("lastSaleDate").textContent=`Fechada em ${sale.date.toLocaleDateString("pt-BR",{day:"2-digit",month:"2-digit",year:"numeric"})} às ${sale.date.toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit"})}`;
+  $("lastSaleAge").innerHTML=`${lastSaleAgeText(sale.date)}<small>desde o último fechamento</small>`;
+}
+
+function updateClock(){const n=new Date();$("clock").textContent=n.toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit"});$("dateLabel").textContent=n.toLocaleDateString("pt-BR",{weekday:"long",day:"2-digit",month:"long"});if(sceneMode==="last")renderLastSale()}
 function resetSceneProgress(){const bar=$("sceneProgressBar");if(!bar)return;bar.classList.remove("running");void bar.offsetWidth;if(autoMode)bar.classList.add("running")}
 function setScene(mode,{restartTimer=true}={}){
-  sceneMode=mode==="map"?"map":"overview";
+  sceneMode=["overview","map","last"].includes(mode)?mode:"overview";
   $("overviewScene").classList.toggle("active",sceneMode==="overview");
   $("mapScene").classList.toggle("active",sceneMode==="map");
+  $("lastSaleScene").classList.toggle("active",sceneMode==="last");
   $("mapScene").setAttribute("aria-hidden",sceneMode==="map"?"false":"true");
-  $("sceneBadge").textContent=sceneMode==="map"?"Mapa · 2 min":"Dashboard · 2 min";
-  $("sceneBtn").textContent=sceneMode==="map"?"▣":"🗺";
-  $("sceneBtn").title=sceneMode==="map"?"Voltar para o dashboard":"Abrir mapa de vendas";
-  if(sceneMode==="map"){
-    setTimeout(()=>renderLeafletMarkers(filteredSales(),{fit:true,rebuild:true}),220);
-    setTimeout(()=>renderLeafletMarkers(filteredSales(),{fit:true}),900);
-  }
+  $("lastSaleScene").setAttribute("aria-hidden",sceneMode==="last"?"false":"true");
+  const labels={overview:"Dashboard · 2 min",map:"Mapa · 2 min",last:"Última venda · 2 min"};$("sceneBadge").textContent=labels[sceneMode];
+  const icons={overview:"🗺",map:"★",last:"▣"};$("sceneBtn").textContent=icons[sceneMode];
+  const titles={overview:"Abrir mapa de vendas",map:"Ver última venda fechada",last:"Voltar para o dashboard"};$("sceneBtn").title=titles[sceneMode];
+  if(sceneMode==="map"){setTimeout(()=>renderLeafletMarkers(filteredSales(),{fit:true,rebuild:true}),220);setTimeout(()=>renderLeafletMarkers(filteredSales(),{fit:true}),900)}
+  if(sceneMode==="last")renderLastSale();
   resetSceneProgress();
   if(restartTimer&&autoMode){clearInterval(autoTimer);autoTimer=setInterval(cycleAuto,120000)}
 }
-function toggleScene(){setScene(sceneMode==="overview"?"map":"overview")}
-function cycleAuto(){setScene(sceneMode==="overview"?"map":"overview",{restartTimer:false})}
+function nextScene(mode){return mode==="overview"?"map":mode==="map"?"last":"overview"}
+function toggleScene(){setScene(nextScene(sceneMode))}
+function cycleAuto(){setScene(nextScene(sceneMode),{restartTimer:false})}
 function setAutoMode(on){autoMode=on;$("autoModeBtn").textContent=on?"Ⅱ":"▶";$("autoModeBtn").title=on?"Pausar alternância automática":"Retomar alternância automática";clearInterval(autoTimer);if(on){resetSceneProgress();autoTimer=setInterval(cycleAuto,120000)}else{$("sceneProgressBar")?.classList.remove("running")}}
 
 async function start(){
