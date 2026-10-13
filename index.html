@@ -66,7 +66,7 @@ button,input{font:inherit}.hidden{display:none!important}.mono{font-variant-nume
 .quick-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding:12px}.quick-stat{background:rgba(255,255,255,.027);border:1px solid rgba(255,255,255,.05);border-radius:16px;padding:14px}.quick-stat span{display:block;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.9px}.quick-stat strong{display:block;font-size:27px;margin-top:6px}.quick-stat small{display:block;color:var(--muted);font-size:8px;margin-top:3px}
 
 /* CATEGORY CARDS */
-.categories{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:14px}
+.categories{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:14px}
 .category-card{position:relative;border-radius:24px;overflow:hidden;border:1px solid var(--line);background:linear-gradient(145deg,rgba(20,43,29,.97),rgba(9,27,15,.97));box-shadow:var(--shadow);padding:20px;min-height:220px;cursor:pointer;transition:transform .22s,border-color .22s,box-shadow .22s}
 .category-card:hover{transform:translateY(-3px)}
 .category-card.active{transform:translateY(-4px);box-shadow:0 22px 65px rgba(0,0,0,.34),0 0 0 1px var(--cat)}
@@ -75,6 +75,7 @@ button,input{font:inherit}.hidden{display:none!important}.mono{font-variant-nume
 .category-card.monitoring{--cat:var(--lime);--catGlow:rgba(200,223,34,.28)}
 .category-card.preventive{--cat:var(--steel);--catGlow:rgba(174,184,199,.15)}
 .category-card.cleaning{--cat:var(--blue);--catGlow:rgba(99,184,255,.23)}
+.category-card.both{--cat:#32ddc3;--catGlow:rgba(50,221,195,.24)}
 .category-head{display:flex;justify-content:space-between;align-items:center;gap:12px}.category-title{display:flex;align-items:center;gap:11px}.category-icon{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:color-mix(in srgb,var(--cat) 14%,transparent);color:var(--cat);font-size:19px;font-weight:900}.category-title strong{font-size:16px;text-transform:uppercase;letter-spacing:.7px}.category-title span{display:block;color:var(--muted);font-size:9px;margin-top:3px}.share-pill{padding:7px 10px;border-radius:999px;background:color-mix(in srgb,var(--cat) 18%,transparent);color:var(--cat);font-size:10px;font-weight:900}
 .category-money{font-size:38px;font-weight:1000;letter-spacing:-1.8px;margin-top:21px;line-height:1}.category-bottom{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:end;margin-top:18px}.category-meta span{display:block;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.9px}.category-meta strong{display:block;font-size:24px;margin-top:4px}.category-progress{margin-top:16px;height:7px;border-radius:999px;background:rgba(255,255,255,.07);overflow:hidden}.category-progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--cat),color-mix(in srgb,var(--cat) 65%,white));border-radius:999px;transition:width .8s cubic-bezier(.22,.61,.36,1)}
 .category-delta{text-align:right}.category-delta span{display:block;color:var(--muted);font-size:8px;text-transform:uppercase}.category-delta strong{display:block;font-size:13px;margin-top:4px;color:var(--cat)}
@@ -91,15 +92,15 @@ button,input{font:inherit}.hidden{display:none!important}.mono{font-variant-nume
 
 
 /* DAILY PERFORMANCE */
-.today-performance{position:relative;display:grid;grid-template-columns:1.25fr repeat(4,minmax(0,1fr));gap:10px;margin-bottom:14px;padding:12px;border:1px solid rgba(151,178,200,.10);border-radius:21px;background:linear-gradient(145deg,rgba(12,19,27,.96),rgba(6,10,15,.97));box-shadow:0 18px 55px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.025);overflow:hidden}
+.today-performance{position:relative;display:grid;grid-template-columns:1.25fr repeat(5,minmax(0,1fr));gap:10px;margin-bottom:14px;padding:12px;border:1px solid rgba(151,178,200,.10);border-radius:21px;background:linear-gradient(145deg,rgba(12,19,27,.96),rgba(6,10,15,.97));box-shadow:0 18px 55px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.025);overflow:hidden}
 .today-performance:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 0% 50%,rgba(158,234,55,.075),transparent 27%),radial-gradient(circle at 100% 50%,rgba(46,156,255,.065),transparent 28%);pointer-events:none}
 .today-main,.today-metric{position:relative;z-index:1;border:1px solid rgba(255,255,255,.055);background:linear-gradient(145deg,rgba(19,28,38,.74),rgba(10,15,21,.70));border-radius:15px;padding:12px 14px;min-height:78px;display:flex;flex-direction:column;justify-content:center;transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
 .today-main{padding-left:16px}.today-main:hover,.today-metric:hover{transform:translateY(-2px);border-color:rgba(158,234,55,.18);box-shadow:0 13px 32px rgba(0,0,0,.20)}
-.today-kicker,.today-metric span{font-size:8px;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:#8fa0ad}.today-main strong{font-size:28px;letter-spacing:-1.3px;margin-top:4px}.today-main small{font-size:8px;color:var(--muted);margin-top:3px}.today-metric strong{font-size:25px;margin-top:5px}.today-metric.monitoring strong{color:var(--lime-soft)}.today-metric.preventive strong{color:#d6dee6}.today-metric.cleaning strong{color:#75c9ff}.today-metric.total-sales strong{color:#fff}
+.today-kicker,.today-metric span{font-size:8px;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:#8fa0ad}.today-main strong{font-size:28px;letter-spacing:-1.3px;margin-top:4px}.today-main small{font-size:8px;color:var(--muted);margin-top:3px}.today-metric strong{font-size:25px;margin-top:5px}.today-metric.monitoring strong{color:var(--lime-soft)}.today-metric.preventive strong{color:#d6dee6}.today-metric.cleaning strong{color:#75c9ff}.today-metric.both strong{color:#79eedc}.today-metric.total-sales strong{color:#fff}
 
 /* PREMIUM MOTION */
 .panel,.category-card,.quick-stat,.today-main,.today-metric{animation:premiumRise .65s cubic-bezier(.2,.8,.2,1) both}
-.category-card:nth-child(2){animation-delay:.07s}.category-card:nth-child(3){animation-delay:.14s}
+.category-card:nth-child(2){animation-delay:.07s}.category-card:nth-child(3){animation-delay:.14s}.category-card:nth-child(4){animation-delay:.21s}
 @keyframes premiumRise{from{opacity:0;transform:translateY(10px) scale(.995)}to{opacity:1;transform:none}}
 .category-progress i,.region-bar i{transition:width .85s cubic-bezier(.2,.8,.2,1)}
 .chart-bar{transform-origin:bottom;animation:barGrow .72s cubic-bezier(.2,.8,.2,1) both}
@@ -121,6 +122,16 @@ button,input{font:inherit}.hidden{display:none!important}.mono{font-variant-nume
 .sale-celebration-footer{position:absolute;left:50px;right:50px;bottom:24px;display:flex;justify-content:space-between;align-items:center;color:#81929f;font-size:9px;text-transform:uppercase;letter-spacing:1px}.sale-celebration-countdown{font-weight:900;color:var(--alertSoft)}
 .sale-celebration-progress{position:absolute;left:0;right:0;bottom:0;height:5px;background:rgba(255,255,255,.04)}.sale-celebration-progress i{display:block;height:100%;width:100%;background:linear-gradient(90deg,var(--alert),var(--alertSoft));box-shadow:0 0 18px color-mix(in srgb,var(--alert) 45%,transparent);transform-origin:left}.sale-celebration.show .sale-celebration-progress i{animation:sale30s 30s linear forwards}@keyframes sale30s{from{transform:scaleX(1)}to{transform:scaleX(0)}}
 @media(max-width:950px){.today-performance{grid-template-columns:1fr 1fr}.today-main{grid-column:1/-1}.sale-celebration-card{grid-template-columns:1fr;text-align:center;padding:30px;gap:20px}.sale-celebration-icon{margin:auto;width:120px;height:120px}.sale-celebration-icon svg{width:68px;height:68px}.sale-celebration-title{font-size:42px}.sale-celebration-meta{justify-content:center}.sale-celebration-footer{left:30px;right:30px}}
+
+/* Status real das integrações Realtime Database */
+.source-health{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:-3px 0 12px;position:relative;z-index:2}
+.source-tag{display:inline-flex;align-items:center;gap:7px;padding:7px 10px;border-radius:999px;background:rgba(110,143,166,.08);border:1px solid rgba(148,177,197,.16);font-size:9px;color:#b7c7d3;max-width:100%}
+.source-tag i{display:block;width:7px;height:7px;flex:none;border-radius:50%;background:#8fa4b6}
+.source-tag.ok i{background:#55e58a;box-shadow:0 0 12px rgba(85,229,138,.45)}
+.source-tag.empty i,.source-tag.loading i{background:#f0bb5a}
+.source-tag.error i{background:#ff7070;box-shadow:0 0 10px rgba(255,112,112,.4)}
+.source-hint{margin-left:auto;color:#718390;font-size:9px}
+@media(max-width:700px){.source-hint{margin-left:0;width:100%}.source-health{gap:5px}}
 
 /* NEW SALE ALERT */
 .sale-alert{position:fixed;left:50%;top:18px;transform:translate(-50%,-140%);z-index:1000;min-width:min(620px,calc(100vw - 28px));padding:16px 18px;border-radius:18px;border:1px solid rgba(200,223,34,.34);background:linear-gradient(145deg,#16331f,#0c2213);box-shadow:0 26px 90px rgba(0,0,0,.5);display:grid;grid-template-columns:auto 1fr auto;gap:13px;align-items:center;transition:transform .5s cubic-bezier(.2,.8,.2,1)}.sale-alert.show{transform:translate(-50%,0)}.sale-alert-icon{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:var(--lime);color:#07230b;font-size:20px;font-weight:1000}.sale-alert strong{display:block;font-size:13px;text-transform:uppercase;letter-spacing:.8px}.sale-alert span{display:block;font-size:10px;color:var(--muted);margin-top:3px}.sale-alert-value{font-size:21px;font-weight:1000;color:var(--lime-soft)}
@@ -159,6 +170,7 @@ body{background:radial-gradient(circle at 13% -8%,rgba(158,234,55,.11),transpare
 .category-card.monitoring{background:radial-gradient(circle at 110% 110%,rgba(158,234,55,.18),transparent 45%),linear-gradient(145deg,#0f1717,#080d11 68%)}
 .category-card.preventive{background:radial-gradient(circle at 108% 112%,rgba(174,184,199,.12),transparent 46%),linear-gradient(145deg,#161c23,#090d12 70%);border-color:rgba(174,184,199,.16)}
 .category-card.cleaning{background:radial-gradient(circle at 110% 112%,rgba(46,156,255,.20),transparent 45%),linear-gradient(145deg,#0c1622,#080d13 70%)}
+.category-card.both{background:radial-gradient(circle at 110% 112%,rgba(50,221,195,.20),transparent 45%),linear-gradient(145deg,#0c2224,#080d13 70%)}
 .category-card::after{width:3px;box-shadow:0 0 18px color-mix(in srgb,var(--cat) 40%,transparent)}
 .category-card:hover{transform:translateY(-5px) scale(1.006);border-color:color-mix(in srgb,var(--cat) 38%,rgba(255,255,255,.08))}
 .category-icon{width:48px;height:48px;border-radius:15px;background:linear-gradient(145deg,color-mix(in srgb,var(--cat) 17%,rgba(255,255,255,.02)),rgba(255,255,255,.025));border:1px solid color-mix(in srgb,var(--cat) 22%,transparent);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 8px 24px rgba(0,0,0,.25)}
@@ -167,6 +179,8 @@ body{background:radial-gradient(circle at 13% -8%,rgba(158,234,55,.11),transpare
 .category-card.preventive .category-delta strong,.category-card.preventive .share-pill{color:#d8dfe8}
 .category-card.preventive .share-pill{background:rgba(174,184,199,.10);border:1px solid rgba(174,184,199,.12)}
 .category-card.cleaning .category-icon{color:#81c9ff}
+.category-card.both .category-icon{color:#86ffef}
+.category-card.both .category-title strong{font-size:clamp(11px,1vw,15px)}
 .category-card.monitoring .category-icon{color:#c9ff6d}
 .category-money{font-size:40px;letter-spacing:-2px}
 .category-progress{height:6px;background:rgba(255,255,255,.055)}
@@ -211,8 +225,8 @@ body{background:radial-gradient(circle at 13% -8%,rgba(158,234,55,.11),transpare
 /* TV scenes */
 .tv-scene{display:none;opacity:0;transform:translateY(8px);transition:opacity .55s ease,transform .55s ease}.tv-scene.active{display:block;opacity:1;transform:none}.map-scene.active{display:block}.scene-progress{position:fixed;left:0;right:0;bottom:0;height:3px;z-index:1200;background:rgba(255,255,255,.035);overflow:hidden}.scene-progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--lime),var(--blue));box-shadow:0 0 16px rgba(97,188,255,.45)}.scene-progress i.running{animation-name:sceneCountdown;animation-timing-function:linear;animation-fill-mode:forwards}@keyframes sceneCountdown{from{width:0}to{width:100%}}
 /* Dedicated map screen */
-.map-screen{position:relative;height:calc(100vh - 116px);min-height:650px;border:1px solid rgba(135,158,179,.14);border-radius:28px;overflow:hidden;background:#0a1016;box-shadow:0 34px 110px rgba(0,0,0,.45)}.leaflet-map{position:absolute;inset:0;z-index:1;background:#d8e0e5;overflow:hidden;cursor:grab;touch-action:none}.leaflet-map:active{cursor:grabbing}.osm-tile-layer{position:absolute;inset:0;overflow:hidden;background:#d8e0e5}.osm-tile{position:absolute;width:256px;height:256px;max-width:none!important;user-select:none;pointer-events:none}.osm-pin-layer{position:absolute;inset:0;z-index:20;pointer-events:none}.osm-sale-pin{position:absolute;transform:translate(-50%,-100%);pointer-events:auto;cursor:pointer;filter:drop-shadow(0 8px 13px rgba(0,0,0,.32));transition:transform .16s ease;background:none;border:0;padding:0;appearance:none;-webkit-appearance:none;outline:none;box-shadow:none}.osm-sale-pin:hover{transform:translate(-50%,-100%) scale(1.12);z-index:30}.osm-sale-pin:focus-visible{transform:translate(-50%,-100%) scale(1.12);z-index:30}.osm-map-message{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:10;padding:12px 16px;border-radius:13px;background:rgba(9,15,21,.86);color:#dbe4ea;font-size:11px;border:1px solid rgba(255,255,255,.10);box-shadow:0 12px 36px rgba(0,0,0,.25)}.leaflet-map .leaflet-tile{max-width:none!important;max-height:none!important}.leaflet-map .leaflet-pane,.leaflet-map .leaflet-tile-pane,.leaflet-map .leaflet-map-pane{will-change:transform}.leaflet-map .leaflet-control-zoom{border:0!important;box-shadow:0 10px 35px rgba(0,0,0,.22)!important}.leaflet-map .leaflet-control-zoom a{background:rgba(8,14,20,.9)!important;color:#fff!important;border-color:rgba(255,255,255,.08)!important}.map-screen:after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(180deg,rgba(5,9,13,.65) 0%,rgba(5,9,13,.08) 22%,transparent 50%,rgba(5,9,13,.20) 100%)}.map-screen-top{position:absolute;z-index:500;left:24px;right:24px;top:22px;display:flex;justify-content:space-between;gap:20px;align-items:flex-start;pointer-events:none}.map-screen-top>div:first-child{padding:15px 18px;border:1px solid rgba(255,255,255,.10);border-radius:18px;background:linear-gradient(145deg,rgba(10,17,24,.92),rgba(8,13,19,.82));backdrop-filter:blur(16px);box-shadow:0 18px 54px rgba(0,0,0,.28)}.map-kicker{font-size:9px;font-weight:900;letter-spacing:1.4px;text-transform:uppercase;color:var(--lime)}.map-screen-top h2{margin:5px 0 3px;font-size:27px;letter-spacing:-.7px}.map-screen-top p{margin:0;color:#9badbb;font-size:10px}.map-screen-total{padding:13px 16px;border:1px solid rgba(255,255,255,.10);border-radius:16px;background:rgba(8,14,20,.88);backdrop-filter:blur(15px);text-align:right;box-shadow:0 18px 54px rgba(0,0,0,.25)}.map-screen-total span{display:block;font-size:8px;text-transform:uppercase;letter-spacing:1px;color:#95a6b4}.map-screen-total strong{display:block;font-size:23px;margin-top:3px}.map-mini-stats{position:absolute;z-index:500;left:24px;bottom:26px;display:flex;gap:8px;pointer-events:none}.map-mini-stats>div{min-width:112px;padding:10px 12px;border:1px solid rgba(255,255,255,.10);border-radius:14px;background:rgba(8,14,20,.90);backdrop-filter:blur(15px);box-shadow:0 12px 38px rgba(0,0,0,.24)}.map-mini-stats span{display:block;font-size:7px;text-transform:uppercase;letter-spacing:.8px;color:#91a1ae}.map-mini-stats strong{display:block;font-size:20px;margin-top:3px}.mini-monitoring strong{color:var(--lime-soft)}.mini-preventive strong{color:#c8d1d9}.mini-cleaning strong{color:#69c7ff}.map-legend-premium{position:absolute;z-index:500;left:24px;bottom:102px;display:flex;gap:8px;padding:9px 11px;border-radius:999px;border:1px solid rgba(255,255,255,.10);background:rgba(8,14,20,.88);backdrop-filter:blur(14px);font-size:8px;color:#d8e0e6}.map-legend-premium span{display:flex;align-items:center;gap:5px}.legend-pin{width:9px;height:9px;border-radius:50%;display:inline-block}.legend-pin.monitoring{background:var(--lime);box-shadow:0 0 10px rgba(158,234,55,.55)}.legend-pin.preventive{background:#293541;border:2px solid #9eacb8}.legend-pin.cleaning{background:var(--blue);box-shadow:0 0 10px rgba(46,156,255,.5)}.map-side-panel{position:absolute;z-index:500;right:24px;top:106px;bottom:25px;width:310px;padding:16px;border:1px solid rgba(255,255,255,.10);border-radius:20px;background:linear-gradient(150deg,rgba(8,14,20,.92),rgba(10,17,24,.84));backdrop-filter:blur(18px);box-shadow:0 24px 70px rgba(0,0,0,.34);overflow:auto}.map-side-panel::-webkit-scrollbar{width:5px}.map-side-panel::-webkit-scrollbar-thumb{background:rgba(255,255,255,.14);border-radius:10px}.map-side-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.map-side-head span{display:block;color:#80919f;font-size:7px;text-transform:uppercase;letter-spacing:1px}.map-side-head strong{display:block;font-size:15px;margin-top:2px}.map-side-head.compact{margin-top:10px}.map-side-divider{height:1px;background:rgba(255,255,255,.07);margin:15px 0}.map-credit{position:absolute;z-index:500;right:345px;bottom:10px;font-size:7px;color:rgba(25,35,45,.65);background:rgba(255,255,255,.72);padding:2px 5px;border-radius:4px}.map-zoom-controls{position:absolute;z-index:520;left:24px;top:120px;display:grid;gap:8px}.map-zoom-btn{width:46px;height:46px;border-radius:14px;border:1px solid rgba(255,255,255,.10);background:rgba(8,14,20,.90);color:#fff;font-size:22px;font-weight:900;display:grid;place-items:center;cursor:pointer;backdrop-filter:blur(14px);box-shadow:0 16px 40px rgba(0,0,0,.24);transition:.16s ease}.map-zoom-btn:hover{transform:translateY(-1px);border-color:rgba(158,234,55,.35);color:var(--lime-soft)}.map-zoom-btn.small{font-size:18px}.map-interaction-hint{position:absolute;z-index:520;left:24px;top:278px;padding:8px 10px;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:rgba(8,14,20,.80);color:#b9c6d1;font-size:8px;backdrop-filter:blur(10px)}.sale-pin-wrap{background:none!important;border:0!important}.sale-pin{width:45px;height:45px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);display:grid;place-items:center;border:3px solid rgba(255,255,255,.92);box-shadow:0 8px 24px rgba(0,0,0,.35),0 0 0 4px rgba(255,255,255,.18)}.sale-pin>span{transform:rotate(45deg);width:30px;height:30px;border-radius:50%;display:grid;place-items:center;color:#fff}.sale-pin svg{width:22px;height:22px}.sale-pin.monitoring{background:linear-gradient(145deg,#b3f443,#32b652);box-shadow:0 8px 24px rgba(0,0,0,.35),0 0 0 4px rgba(158,234,55,.20),0 0 28px rgba(90,220,76,.28)}.sale-pin.monitoring>span{background:#0b3e1b}.sale-pin.preventive{background:linear-gradient(145deg,#5a6875,#1b232c);border-color:#e5ebef;box-shadow:0 8px 24px rgba(0,0,0,.42),0 0 0 4px rgba(123,142,157,.18)}.sale-pin.preventive>span{background:#10161d;color:#e8edf1}.sale-pin.cleaning{background:linear-gradient(145deg,#50c9ff,#1569ff);box-shadow:0 8px 24px rgba(0,0,0,.35),0 0 0 4px rgba(46,156,255,.18),0 0 28px rgba(46,156,255,.28)}.sale-pin.cleaning>span{background:#072c66}.leaflet-popup-content-wrapper,.leaflet-popup-tip{background:#0e1720;color:#eaf0f4}.leaflet-popup-content-wrapper{border:1px solid rgba(255,255,255,.10);border-radius:14px;box-shadow:0 18px 48px rgba(0,0,0,.38)}.leaflet-popup-content{margin:12px 14px;font:11px Inter,Segoe UI,Arial,sans-serif}.sale-popup strong{display:block;font-size:12px;margin-bottom:3px}.sale-popup span{display:block;color:#95a6b3;font-size:9px;line-height:1.45}.sale-popup b{display:block;margin-top:7px;font-size:13px;color:#fff}.leaflet-container a.leaflet-popup-close-button{color:#c8d2da}
-@media(max-width:1250px){.dashboard{padding:18px}.smart-filters{grid-template-columns:1fr 1fr 1fr}.filter-service{grid-column:1/-1}.geo-grid{grid-template-columns:1fr}.categories{grid-template-columns:1fr 1fr}.category-card:last-child{grid-column:1/-1}.lower-grid{grid-template-columns:1fr 1fr}.lower-panel:last-child{grid-column:1/-1}.header-title{display:none}}
+.map-screen{position:relative;height:calc(100vh - 116px);min-height:650px;border:1px solid rgba(135,158,179,.14);border-radius:28px;overflow:hidden;background:#0a1016;box-shadow:0 34px 110px rgba(0,0,0,.45)}.leaflet-map{position:absolute;inset:0;z-index:1;background:#d8e0e5;overflow:hidden;cursor:grab;touch-action:none}.leaflet-map:active{cursor:grabbing}.osm-tile-layer{position:absolute;inset:0;overflow:hidden;background:#d8e0e5}.osm-tile{position:absolute;width:256px;height:256px;max-width:none!important;user-select:none;pointer-events:none}.osm-pin-layer{position:absolute;inset:0;z-index:20;pointer-events:none}.osm-sale-pin{position:absolute;transform:translate(-50%,-100%);pointer-events:auto;cursor:pointer;filter:drop-shadow(0 8px 13px rgba(0,0,0,.32));transition:transform .16s ease;background:none;border:0;padding:0;appearance:none;-webkit-appearance:none;outline:none;box-shadow:none}.osm-sale-pin:hover{transform:translate(-50%,-100%) scale(1.12);z-index:30}.osm-sale-pin:focus-visible{transform:translate(-50%,-100%) scale(1.12);z-index:30}.osm-map-message{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:10;padding:12px 16px;border-radius:13px;background:rgba(9,15,21,.86);color:#dbe4ea;font-size:11px;border:1px solid rgba(255,255,255,.10);box-shadow:0 12px 36px rgba(0,0,0,.25)}.leaflet-map .leaflet-tile{max-width:none!important;max-height:none!important}.leaflet-map .leaflet-pane,.leaflet-map .leaflet-tile-pane,.leaflet-map .leaflet-map-pane{will-change:transform}.leaflet-map .leaflet-control-zoom{border:0!important;box-shadow:0 10px 35px rgba(0,0,0,.22)!important}.leaflet-map .leaflet-control-zoom a{background:rgba(8,14,20,.9)!important;color:#fff!important;border-color:rgba(255,255,255,.08)!important}.map-screen:after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(180deg,rgba(5,9,13,.65) 0%,rgba(5,9,13,.08) 22%,transparent 50%,rgba(5,9,13,.20) 100%)}.map-screen-top{position:absolute;z-index:500;left:24px;right:24px;top:22px;display:flex;justify-content:space-between;gap:20px;align-items:flex-start;pointer-events:none}.map-screen-top>div:first-child{padding:15px 18px;border:1px solid rgba(255,255,255,.10);border-radius:18px;background:linear-gradient(145deg,rgba(10,17,24,.92),rgba(8,13,19,.82));backdrop-filter:blur(16px);box-shadow:0 18px 54px rgba(0,0,0,.28)}.map-kicker{font-size:9px;font-weight:900;letter-spacing:1.4px;text-transform:uppercase;color:var(--lime)}.map-screen-top h2{margin:5px 0 3px;font-size:27px;letter-spacing:-.7px}.map-screen-top p{margin:0;color:#9badbb;font-size:10px}.map-screen-total{padding:13px 16px;border:1px solid rgba(255,255,255,.10);border-radius:16px;background:rgba(8,14,20,.88);backdrop-filter:blur(15px);text-align:right;box-shadow:0 18px 54px rgba(0,0,0,.25)}.map-screen-total span{display:block;font-size:8px;text-transform:uppercase;letter-spacing:1px;color:#95a6b4}.map-screen-total strong{display:block;font-size:23px;margin-top:3px}.map-mini-stats{position:absolute;z-index:500;left:24px;bottom:26px;display:flex;gap:8px;pointer-events:none}.map-mini-stats>div{min-width:112px;padding:10px 12px;border:1px solid rgba(255,255,255,.10);border-radius:14px;background:rgba(8,14,20,.90);backdrop-filter:blur(15px);box-shadow:0 12px 38px rgba(0,0,0,.24)}.map-mini-stats span{display:block;font-size:7px;text-transform:uppercase;letter-spacing:.8px;color:#91a1ae}.map-mini-stats strong{display:block;font-size:20px;margin-top:3px}.mini-monitoring strong{color:var(--lime-soft)}.mini-preventive strong{color:#c8d1d9}.mini-cleaning strong{color:#69c7ff}.mini-both strong{color:#79eedc}.map-legend-premium{position:absolute;z-index:500;left:24px;bottom:102px;display:flex;gap:8px;padding:9px 11px;border-radius:999px;border:1px solid rgba(255,255,255,.10);background:rgba(8,14,20,.88);backdrop-filter:blur(14px);font-size:8px;color:#d8e0e6}.map-legend-premium span{display:flex;align-items:center;gap:5px}.legend-pin{width:9px;height:9px;border-radius:50%;display:inline-block}.legend-pin.monitoring{background:var(--lime);box-shadow:0 0 10px rgba(158,234,55,.55)}.legend-pin.preventive{background:#293541;border:2px solid #9eacb8}.legend-pin.cleaning{background:var(--blue);box-shadow:0 0 10px rgba(46,156,255,.5)}.legend-pin.both{background:#32ddc3;box-shadow:0 0 10px rgba(50,221,195,.5)}.map-side-panel{position:absolute;z-index:500;right:24px;top:106px;bottom:25px;width:310px;padding:16px;border:1px solid rgba(255,255,255,.10);border-radius:20px;background:linear-gradient(150deg,rgba(8,14,20,.92),rgba(10,17,24,.84));backdrop-filter:blur(18px);box-shadow:0 24px 70px rgba(0,0,0,.34);overflow:auto}.map-side-panel::-webkit-scrollbar{width:5px}.map-side-panel::-webkit-scrollbar-thumb{background:rgba(255,255,255,.14);border-radius:10px}.map-side-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.map-side-head span{display:block;color:#80919f;font-size:7px;text-transform:uppercase;letter-spacing:1px}.map-side-head strong{display:block;font-size:15px;margin-top:2px}.map-side-head.compact{margin-top:10px}.map-side-divider{height:1px;background:rgba(255,255,255,.07);margin:15px 0}.map-credit{position:absolute;z-index:500;right:345px;bottom:10px;font-size:7px;color:rgba(25,35,45,.65);background:rgba(255,255,255,.72);padding:2px 5px;border-radius:4px}.map-zoom-controls{position:absolute;z-index:520;left:24px;top:120px;display:grid;gap:8px}.map-zoom-btn{width:46px;height:46px;border-radius:14px;border:1px solid rgba(255,255,255,.10);background:rgba(8,14,20,.90);color:#fff;font-size:22px;font-weight:900;display:grid;place-items:center;cursor:pointer;backdrop-filter:blur(14px);box-shadow:0 16px 40px rgba(0,0,0,.24);transition:.16s ease}.map-zoom-btn:hover{transform:translateY(-1px);border-color:rgba(158,234,55,.35);color:var(--lime-soft)}.map-zoom-btn.small{font-size:18px}.map-interaction-hint{position:absolute;z-index:520;left:24px;top:278px;padding:8px 10px;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:rgba(8,14,20,.80);color:#b9c6d1;font-size:8px;backdrop-filter:blur(10px)}.sale-pin-wrap{background:none!important;border:0!important}.sale-pin{width:45px;height:45px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);display:grid;place-items:center;border:3px solid rgba(255,255,255,.92);box-shadow:0 8px 24px rgba(0,0,0,.35),0 0 0 4px rgba(255,255,255,.18)}.sale-pin>span{transform:rotate(45deg);width:30px;height:30px;border-radius:50%;display:grid;place-items:center;color:#fff}.sale-pin svg{width:22px;height:22px}.sale-pin.monitoring{background:linear-gradient(145deg,#b3f443,#32b652);box-shadow:0 8px 24px rgba(0,0,0,.35),0 0 0 4px rgba(158,234,55,.20),0 0 28px rgba(90,220,76,.28)}.sale-pin.monitoring>span{background:#0b3e1b}.sale-pin.preventive{background:linear-gradient(145deg,#5a6875,#1b232c);border-color:#e5ebef;box-shadow:0 8px 24px rgba(0,0,0,.42),0 0 0 4px rgba(123,142,157,.18)}.sale-pin.preventive>span{background:#10161d;color:#e8edf1}.sale-pin.cleaning{background:linear-gradient(145deg,#50c9ff,#1569ff);box-shadow:0 8px 24px rgba(0,0,0,.35),0 0 0 4px rgba(46,156,255,.18),0 0 28px rgba(46,156,255,.28)}.sale-pin.cleaning>span{background:#072c66}.leaflet-popup-content-wrapper,.leaflet-popup-tip{background:#0e1720;color:#eaf0f4}.leaflet-popup-content-wrapper{border:1px solid rgba(255,255,255,.10);border-radius:14px;box-shadow:0 18px 48px rgba(0,0,0,.38)}.leaflet-popup-content{margin:12px 14px;font:11px Inter,Segoe UI,Arial,sans-serif}.sale-popup strong{display:block;font-size:12px;margin-bottom:3px}.sale-popup span{display:block;color:#95a6b3;font-size:9px;line-height:1.45}.sale-popup b{display:block;margin-top:7px;font-size:13px;color:#fff}.leaflet-container a.leaflet-popup-close-button{color:#c8d2da}
+@media(max-width:1250px){.dashboard{padding:18px}.smart-filters{grid-template-columns:1fr 1fr 1fr}.filter-service{grid-column:1/-1}.geo-grid{grid-template-columns:1fr}.categories{grid-template-columns:repeat(2,minmax(0,1fr))}.lower-grid{grid-template-columns:1fr 1fr}.lower-panel:last-child{grid-column:1/-1}.header-title{display:none}}
 .map-focus .summary-row,.map-focus .categories,.map-focus .lower-grid{display:none}.map-focus .geo-grid{grid-template-columns:1.45fr .8fr;align-items:stretch}.map-focus .map-panel,.map-focus .region-panel{min-height:clamp(460px,68vh,780px)}.map-focus .map-stage{min-height:clamp(400px,60vh,720px)}.map-focus .panel-title strong{font-size:17px}.map-focus .panel-badge{font-size:12px}.scene-badge{min-width:100px;justify-content:center}
 @media(max-width:780px){.header{grid-template-columns:1fr auto}.smart-filters{grid-template-columns:1fr}.filter-service{grid-column:auto}.filter-summary{align-items:flex-start;flex-direction:column}.geo-grid{grid-template-columns:1fr}.map-panel,.region-panel{min-height:0}.map-stage{min-height:320px}.clock{display:none}.summary-row,.categories,.lower-grid{grid-template-columns:1fr}.category-card:last-child,.lower-panel:last-child{grid-column:auto}.hero-total{grid-template-columns:1fr}.goal-wrap{margin-top:18px}.total-value{font-size:39px}.dashboard{padding:13px}.quick-stats{grid-template-columns:1fr 1fr}.header-actions .live-pill{display:none}.category-money{font-size:32px}.filter-strip{align-items:flex-start;flex-direction:column}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
@@ -229,12 +243,13 @@ body{background:radial-gradient(circle at 13% -8%,rgba(158,234,55,.11),transpare
 .map-flag.monitoring{--flag-color:#9eea37;--flag-light:#d7ff87;--flag-dark:#4b8d18}
 .map-flag.preventive{--flag-color:#d6dee6;--flag-light:#ffffff;--flag-dark:#7d8b98}
 .map-flag.cleaning{--flag-color:#2e9cff;--flag-light:#a8ddff;--flag-dark:#0d5fc9}
+.map-flag.both{--flag-color:#32ddc3;--flag-light:#a5fff0;--flag-dark:#108f87}
 @keyframes flagWave{0%,100%{transform:perspective(60px) rotateY(0deg) skewY(0deg) scale(1)}50%{transform:perspective(60px) rotateY(-22deg) skewY(-3deg) scale(1.03)}}
 @keyframes mapLightBlink{0%,100%{opacity:.52;transform:scale(.78)}45%{opacity:1;transform:scale(1.18)}65%{opacity:.9;transform:scale(.96)}}
 @keyframes mapLightRing{0%{opacity:.45;transform:translate(-50%,-50%) scale(.55)}70%,100%{opacity:0;transform:translate(-50%,-50%) scale(1.55)}}
 @keyframes mapLightGlow{0%,100%{opacity:.12;transform:translate(-50%,-50%) scale(.72)}50%{opacity:.32;transform:translate(-50%,-50%) scale(1.18)}}
 
-@media(max-width:780px){.map-side-panel{display:none}.map-credit{right:10px}.map-mini-stats{left:12px;right:12px;bottom:14px;display:grid;grid-template-columns:1fr 1fr}.map-mini-stats>div{min-width:0}.map-legend-premium{left:12px;bottom:125px}.map-screen-top{left:12px;right:12px;top:12px}.map-screen-top p{display:none}.map-screen-total{display:none}.map-screen{min-height:560px;height:calc(100vh - 90px)}}
+@media(max-width:780px){.map-side-panel{display:none}.map-credit{right:10px}.map-mini-stats{left:12px;right:12px;bottom:14px;display:grid;grid-template-columns:1fr 1fr}.map-mini-stats>div{min-width:0}.map-legend-premium{left:12px;bottom:156px;right:12px;max-width:max-content;flex-wrap:wrap}.map-screen-top{left:12px;right:12px;top:12px}.map-screen-top p{display:none}.map-screen-total{display:none}.map-screen{min-height:560px;height:calc(100vh - 90px)}}
 
 /* THIRD TV SCREEN · LAST CLOSED SALE */
 .last-sale-screen{position:relative;height:calc(100vh - 116px);min-height:650px;border:1px solid rgba(158,234,55,.18);border-radius:30px;overflow:hidden;background:radial-gradient(circle at 50% 34%,rgba(158,234,55,.16),transparent 28%),radial-gradient(circle at 88% 14%,rgba(46,156,255,.11),transparent 27%),linear-gradient(145deg,#071009 0%,#071016 52%,#04070a 100%);box-shadow:0 34px 120px rgba(0,0,0,.50),inset 0 1px 0 rgba(255,255,255,.03);display:grid;place-items:center;padding:44px}
@@ -302,6 +317,12 @@ body{background:radial-gradient(circle at 13% -8%,rgba(158,234,55,.11),transpare
       <div class="clock"><strong id="clock">--:--</strong><span id="dateLabel">--</span></div>
     </div>
   </header>
+  <div class="source-health" id="sourceHealth" aria-live="polite">
+    <span id="contractsDataStatus" class="source-tag loading"><i></i> Contratos IGM / IGP / IGC / IGL: conectando...</span>
+    <span id="monitorDataStatus" class="source-tag loading"><i></i> Monitoramento: conectando...</span>
+    <span id="jobsDataStatus" class="source-tag loading"><i></i> Preventivas e limpeza: conectando...</span>
+    <span id="dataSourceHint" class="source-hint">Base: Firebase Realtime Database</span>
+  </div>
 
   <main id="overviewScene" class="tv-scene active">
   <section class="summary-row">
@@ -335,6 +356,7 @@ body{background:radial-gradient(circle at 13% -8%,rgba(158,234,55,.11),transpare
     <div class="today-metric monitoring"><span>Monitoramento</span><strong id="todayMonitoring" class="mono">0</strong></div>
     <div class="today-metric preventive"><span>Preventivas</span><strong id="todayPreventive" class="mono">0</strong></div>
     <div class="today-metric cleaning"><span>Limpezas</span><strong id="todayCleaning" class="mono">0</strong></div>
+    <div class="today-metric both"><span>Preventivas + Limpezas</span><strong id="todayBoth" class="mono">0</strong></div>
   </section>
 
   <section class="categories">
@@ -376,6 +398,19 @@ body{background:radial-gradient(circle at 13% -8%,rgba(158,234,55,.11),transpare
       </div>
       <div class="category-progress"><i id="barCleaning"></i></div>
     </article>
+
+    <article class="category-card both" data-category="both" tabindex="0" aria-label="Filtrar vendas de Preventivas mais Limpezas, contratos IGC">
+      <div class="category-head">
+        <div class="category-title"><div class="category-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M29 7a10 10 0 0 0-10 12L8 30a4 4 0 0 0 6 6l11-11a10 10 0 0 0 12-10l-6 5-6-3-2-5z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M37 29c2 3 5 7 5 10a6 6 0 0 1-12 0c0-3 4-8 6-10z" fill="none" stroke="currentColor" stroke-width="3"/><path d="M18 9l1.5 3.5L23 14l-3.5 1.5L18 19l-1.5-3.5L13 14l3.5-1.5z" fill="currentColor"/></svg></div><div><strong>Preventivas + Limpezas</strong><span>Contratos IGC no período</span></div></div>
+        <div id="shareBoth" class="share-pill">0%</div>
+      </div>
+      <div id="revenueBoth" class="category-money mono">R$ 0</div>
+      <div class="category-bottom">
+        <div class="category-meta"><span>Vendas</span><strong id="countBoth" class="mono">0</strong></div>
+        <div class="category-delta"><span>Ticket médio</span><strong id="ticketBoth" class="mono">R$ 0</strong></div>
+      </div>
+      <div class="category-progress"><i id="barBoth"></i></div>
+    </article>
   </section>
 
   <section class="smart-filters">
@@ -386,9 +421,10 @@ body{background:radial-gradient(circle at 13% -8%,rgba(158,234,55,.11),transpare
         <button class="filter-btn" type="button" data-filter="monitoring">Monitoramento</button>
         <button class="filter-btn" type="button" data-filter="preventive">Preventiva</button>
         <button class="filter-btn" type="button" data-filter="cleaning">Limpeza</button>
+        <button class="filter-btn" type="button" data-filter="both">Preventivas + Limpezas</button>
       </div>
     </div>
-    <div class="filter-group"><label for="periodFilter">Período</label><select id="periodFilter" class="filter-select"><option value="month">Setembro/2026 · até agora</option><option value="today">Hoje</option><option value="7d">Últimos 7 dias</option><option value="history">Todo o histórico</option></select></div>
+    <div class="filter-group"><label for="periodFilter">Período</label><select id="periodFilter" class="filter-select"><option value="month">Mês atual</option><option value="today">Hoje</option><option value="7d">Últimos 7 dias</option><option value="history">Todo o histórico</option></select></div>
     <div class="filter-group"><label for="sellerFilter">Vendedor</label><select id="sellerFilter" class="filter-select"><option value="all">Todos os vendedores</option></select></div>
     <div class="filter-group"><label for="regionFilter">Região</label><select id="regionFilter" class="filter-select"><option value="all">Todas as regiões</option></select></div>
     <div class="filter-summary"><span id="filterNote">Exibindo visão geral</span><span id="filterResult"><strong>0</strong> vendas no filtro</span><button id="resetFilters" class="filter-reset" type="button">Limpar filtros</button></div>
@@ -434,11 +470,13 @@ body{background:radial-gradient(circle at 13% -8%,rgba(158,234,55,.11),transpare
         <div class="mini-monitoring"><span>Monitoramento</span><strong id="mapMonitoring">0</strong></div>
         <div class="mini-preventive"><span>Preventiva</span><strong id="mapPreventive">0</strong></div>
         <div class="mini-cleaning"><span>Limpeza</span><strong id="mapCleaning">0</strong></div>
+        <div class="mini-both"><span>Preventiva + Limpeza</span><strong id="mapBoth">0</strong></div>
       </div>
       <div class="map-legend-premium">
         <span><i class="legend-pin monitoring"></i>Monitoramento</span>
         <span><i class="legend-pin preventive"></i>Preventiva</span>
         <span><i class="legend-pin cleaning"></i>Limpeza</span>
+        <span><i class="legend-pin both"></i>Preventiva + Limpeza</span>
       </div>
       <aside class="map-side-panel">
         <div class="map-side-head"><div><span>Performance</span><strong>Regiões</strong></div><div id="regionCount" class="panel-badge">0 regiões</div></div>
@@ -575,29 +613,47 @@ body{background:radial-gradient(circle at 13% -8%,rgba(158,234,55,.11),transpare
       <button id="openCrmReport" class="small-btn" type="button">Abrir relatório</button>
     </div>
     <button id="syncCrmNow" class="small-btn" type="button">Sincronizar agora</button>
+    <div style="height:1px;background:rgba(255,255,255,.08);margin:14px 0 10px"></div>
+    <strong style="display:block;margin-bottom:2px">Firebase monitoramento-bdb36 · publicContracts · v7</strong>
+    <div class="settings-help">A leitura principal segue a rota <b>/publicContracts</b>, usada pela aba Contratos do CRM IG Energia. Reconhece <b>IGM</b> (monitoramento), <b>IGP</b> (preventiva), <b>IGC</b> (preventiva + limpeza) e <b>IGL</b> (somente limpeza). O contrato IGC aparece exclusivamente no card Preventivas + Limpezas. Seu valor integral é lançado nessa categoria uma única vez, sem somar novamente nas categorias de serviços avulsos.</div>
+    <label>Aba Contratos — caminhos no Realtime Database</label>
+    <input id="contractsPathInput" type="text" autocomplete="off" placeholder="publicContracts">
+    <div class="settings-help">Fontes alternativas abaixo são usadas somente quando não houver contrato reconhecido na fonte principal.</div>
+    <label>Monitoramento — caminhos alternativos</label>
+    <input id="clientsPathInput" type="text" autocomplete="off" placeholder="clients,clientes">
+    <label>Preventivas / limpeza — caminhos alternativos</label>
+    <input id="jobsPathInput" type="text" autocomplete="off" placeholder="maintenanceJobs,preventiveJobs">
+    <button id="saveDataSources" class="small-btn" type="button">Salvar fontes e reconectar</button>
+    <button id="retryDataSources" class="small-btn" type="button">Recarregar dados do Firebase</button>
+    <div id="dataSourceDetails" class="settings-help">Aguardando autenticação no Firebase.</div>
     <div id="crmAccessStatus" class="settings-help">Ao salvar, o painel tenta sincronizar automaticamente usando a sessão já autenticada do CRM neste navegador.</div>
     <button id="logoutBtn" class="small-btn" type="button">Sair do painel</button>
   </div>
 </div>
 
 <script type="module">
-const decodeValue=v=>atob(v);
+// Projeto Firebase fornecido pelo responsável pelo dashboard.
 const serviceConfig={
-  apiKey:decodeValue("QUl6YVN5QzREWThTT0tLU0NpcmNibzJrU3EwZW4ydmQxbkxMWHZj"),
-  authDomain:decodeValue("bW9uaXRvcmFtZW50by1iZGIzNi5maXJlYmFzZWFwcC5jb20="),
-  projectId:decodeValue("bW9uaXRvcmFtZW50by1iZGIzNg=="),
+  apiKey:"AIzaSyC4DY8SOKKSCircbo2kSq0en2vd1nLLXvc",
+  authDomain:"monitoramento-bdb36.firebaseapp.com",
   databaseURL:"https://monitoramento-bdb36-default-rtdb.firebaseio.com",
-  storageBucket:decodeValue("bW9uaXRvcmFtZW50by1iZGIzNi5maXJlYmFzZXN0b3JhZ2UuYXBw"),
-  messagingSenderId:decodeValue("NzExMjkxODczMTQ="),
-  appId:decodeValue("MTo3MTEyOTE4NzMxNDp3ZWI6MmQzNjRjYTA2ZmI2YjI0YzcwNjE2Yg==")
+  projectId:"monitoramento-bdb36",
+  storageBucket:"monitoramento-bdb36.firebasestorage.app",
+  messagingSenderId:"71129187314",
+  appId:"1:71129187314:web:2d364ca06fb6b24c70616b"
 };
 
 const SDK="12.16.0";
 let db,auth,dbApi,authApi;
-let clients=[],jobs=[];
+let clients=[],jobs=[],contracts=[];
+let contractsLoaded=false;
+let contractSourceMode="fallback";
 let planSettings={cpf:{price:120},cnpj:{price:350}};
 let goal=Number(new URLSearchParams(location.search).get("meta"))||30000;
-const TARGET_MONTH=new URLSearchParams(location.search).get("mes")||"2026-09";
+// O mês atual é o padrão; ?mes=AAAA-MM mantém a possibilidade de consultar meses anteriores.
+const MONTH_PARAM=new URLSearchParams(location.search).get("mes");
+const TARGET_MONTH=/^\d{4}-(0[1-9]|1[0-2])$/.test(MONTH_PARAM||"")?MONTH_PARAM:null;
+function effectiveMonth(){return TARGET_MONTH||monthKey(new Date())}
 let activeFilter="all";
 let periodFilter="month",sellerFilter="all",regionFilter="all";
 let autoMode=false;
@@ -772,30 +828,162 @@ function podiumMarkup(i,clsBase="rank-pos") {
 }
 
 function ts(v){
-  if(!v)return null;
-  if(typeof v==="number")return new Date(v);
-  if(typeof v==="string"){
-    const m=v.match(/^(\d{4})-(\d{2})-(\d{2})$/);
-    if(m)return new Date(Number(m[1]),Number(m[2])-1,Number(m[3]),12,0,0,0);
-    return new Date(v);
+  if(v==null||v==="")return null;
+  if(v instanceof Date)return Number.isNaN(v.getTime())?null:v;
+  if(typeof v==="number")return new Date(v<1e11?v*1000:v);
+  if(typeof v==="object"){
+    if(typeof v.seconds==="number"||typeof v._seconds==="number")return new Date((v.seconds??v._seconds)*1000);
+    if(typeof v.timestamp==="number")return ts(v.timestamp);
+    return null;
   }
-  if(v?.seconds)return new Date(v.seconds*1000);
-  return null
+  if(typeof v==="string"){
+    const raw=v.trim();
+    const br=raw.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})(?:[ ,T]+(\d{1,2}):(\d{2}))?/);
+    if(br)return new Date(Number(br[3]),Number(br[2])-1,Number(br[1]),Number(br[4]||12),Number(br[5]||0));
+    const iso=raw.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if(iso)return new Date(Number(iso[1]),Number(iso[2])-1,Number(iso[3]),12,0,0,0);
+    if(/^\d{10,13}$/.test(raw))return ts(Number(raw));
+    return new Date(raw);
+  }
+  return null;
 }
-function safeDate(v){const d=ts(v);return d&&!isNaN(d)?d:null}
+function safeDate(v){const d=ts(v);return d&&!Number.isNaN(d.getTime())?d:null}
 function monthKey(d){return d?`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}`:""}
-function currentKey(){return TARGET_MONTH}
-function prevMonthKey(){const [y,m]=TARGET_MONTH.split("-").map(Number);const d=new Date(y,m-2,1);return monthKey(d)}
-function soldJob(j){return j?.approved===true||j?.paymentStatus==="paid"||!!j?.serviceOrderNumber}
-function jobSaleDate(j){return safeDate(j.approvedAt)||safeDate(j.paidAt)||safeDate(j.createdAt)}
-function clientSaleDate(c){return safeDate(c.planActivatedAt)||safeDate(c.planStart)||(c?.planActive===true?safeDate(c.createdAt):null)}
-function monitoringSale(c){return (c?.planActive===true||!!c?.planActivatedAt||!!c?.planStart)&&!!clientSaleDate(c)}
-function sellerName(v){return String(v||"Sem vendedor").trim()||"Sem vendedor"}
+function currentKey(){return effectiveMonth()}
+function prevMonthKey(){const [y,m]=currentKey().split("-").map(Number);const d=new Date(y,m-2,1);return monthKey(d)}
+function normalizeStatus(v){return String(v??"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").trim().toLowerCase()}
+function isPaidStatus(v){return ["paid","pago","paga","recebido","quitado","aprovado"].includes(normalizeStatus(v))}
+function approvedFlag(v){return v===true||v===1||["true","sim","yes","1","aprovado","approved","confirmado"].includes(normalizeStatus(v))}
+function soldJob(j){
+  const st=normalizeStatus(j?.status||j?.situacao||j?.contractStatus);
+  return approvedFlag(j?.approved)||approvedFlag(j?.aprovado)||approvedFlag(j?.sold)||
+    isPaidStatus(j?.paymentStatus||j?.situacaoPagamento)||!!(j?.serviceOrderNumber||j?.osNumber||j?.numeroOS)||
+    /^(approved|paid|sold|completed|executing|finished|closed|aprovad|pag|vendid|contratad|assinad|confirmad|conclu|finalizad|execut|fechad|em execucao)/.test(st);
+}
+function jobSaleDate(j){return safeDate(j.approvedAt)||safeDate(j.soldAt)||safeDate(j.contractDate)||safeDate(j.paidAt)||safeDate(j.confirmedAt)||safeDate(j.createdAt)||safeDate(j.dataCriacao)}
+function clientSaleDate(c){return safeDate(c.planActivatedAt)||safeDate(c.planStart)||safeDate(c.soldAt)||safeDate(c.contractDate)||((c.planActive===true)?safeDate(c.createdAt||c.dataCadastro):null)}
+function monitoringSale(c){return (c?.planActive===true||!!c?.planActivatedAt||!!c?.planStart||!!c?.soldAt)&&!!clientSaleDate(c)}
+function sellerName(v){return String(typeof v==="object"?(v?.name||v?.nome||v?.displayName||v?.email||"Sem vendedor"):(v||"Sem vendedor")).trim()||"Sem vendedor"}
 function documentDigits(v){return String(typeof v==="object"?(v?.document||v?.clientDocument||v?.clientSnapshot?.document||""):v||"").replace(/\D/g,"")}
 function getClientType(v){if(typeof v==="object"&&v&&(v.documentType==="cpf"||v.documentType==="cnpj"))return v.documentType;return documentDigits(v).length>11?"cnpj":"cpf"}
-function getPlanPrice(c){const raw=c?.planPrice;const stored=raw===null||raw===""||raw===undefined?NaN:Number(raw);if(Number.isFinite(stored)&&stored>=0)return stored;const type=getClientType(c);return Number(planSettings?.[type]?.price ?? (type==="cnpj"?350:120))||0}
-function jobClient(j){return clients.find(c=>c.id===j.clientId)||j.clientSnapshot||{}}
-function jobClientName(j){return jobClient(j).name||"Cliente"}
+function numberValue(v){
+ if(typeof v==="number")return Number.isFinite(v)?v:NaN;
+ if(typeof v!=="string"||!v.trim())return NaN;
+ let t=v.replace(/R\$/gi,"").replace(/\s/g,"");
+ if(t.includes(","))t=t.replace(/\./g,"").replace(",",".");
+ else if(/^\d{1,3}(\.\d{3})+$/.test(t))t=t.replace(/\./g,"");
+ const n=Number(t);return Number.isFinite(n)?n:NaN;
+}
+function getPlanPrice(c){
+ const raw=c?.planPrice??c?.valorPlano??c?.planoValor??c?.monthlyPrice??c?.plan?.price??c?.plano?.valor;
+ const stored=numberValue(raw);
+ if(Number.isFinite(stored)&&stored>=0)return stored;
+ const type=getClientType(c);return Number(planSettings?.[type]?.price??(type==="cnpj"?350:120))||0;
+}
+function jobClient(j){
+ const linked=clients.find(c=>String(c.id)===String(j.clientId??j.clienteId??""));
+ return linked||j.clientSnapshot||j.clienteSnapshot||(typeof j.client==="object"?j.client:null)||j.customer||{};
+}
+function jobClientName(j){return jobClient(j).name||jobClient(j).nome||j.clientName||j.nomeCliente||"Cliente"}
+function jobKind(j){
+ const raw=[j.serviceType,j.tipoServico,j.service,j.servico,j.category,j.categoria,j.type,j.name,j.nome].filter(Boolean).map(normalizeStatus).join(" ");
+ const preventive=/prevent|manuten|revisao|inspecao/.test(raw);
+ const cleaning=/limpez|lavag|lavac|higieniz/.test(raw);
+ if(preventive&&cleaning)return "both";
+ if(preventive)return "preventive";
+ if(cleaning)return "cleaning";
+ if(["preventive","cleaning","both"].includes(j.serviceType))return j.serviceType;
+ return null;
+}
+// Siglas REAIS da central de contratos da IG Energia em /publicContracts:
+// IGM = Monitoramento | IGP = Preventiva | IGC = Preventiva + Limpeza | IGL = Limpeza.
+// Aceita tags em arrays, mapas, campos simples e identificadores como IGM-001.
+function flattenContractCode(v,depth=0){
+  if(v==null||depth>3)return [];
+  if(Array.isArray(v))return v.flatMap(item=>flattenContractCode(item,depth+1));
+  if(typeof v==="object"){
+    return Object.entries(v).flatMap(([k,value])=>{
+      if(typeof value==="boolean"||typeof value==="number")return value?[k]:[];
+      return flattenContractCode(value,depth+1);
+    });
+  }
+  return [String(v)];
+}
+function contractTag(c){
+  if(!c||typeof c!=="object")return null;
+  const fields=["tag","tags","sigla","siglas","codigoTag","contractTag","contractTags","tagContrato",
+    "codigoTipo","tipoContrato","tipo_contrato","contractType","modeloContrato","modelo","model",
+    "codigoContrato","numeroContrato","numero_contrato","contractNumber","numero","number","codigo",
+    "serviceType","tipoServico","servico","categoria","category","produto","tipo","title","titulo","nomeContrato"];
+  const candidates=[];
+  for(const k of fields){if(c[k]!=null)candidates.push(...flattenContractCode(c[k]));}
+  for(const nested of [c.contrato,c.contract,c.metadata,c.dadosContrato,c.plan,c.plano]){
+    if(nested&&typeof nested==="object")for(const k of fields){if(nested[k]!=null)candidates.push(...flattenContractCode(nested[k]));}
+  }
+  // Match token only, or codes followed by a serial number (IGC00001 / IGC-001).
+  const matches=[];
+  for(const value of candidates){
+    const raw=String(value).toUpperCase();
+    const m=raw.match(/(?:^|[^A-Z])(IGC|IGP|IGM|IGL)(?=$|[^A-Z]|\d)/g);
+    if(m)for(const part of m){const code=part.match(/IG[CPML]/);if(code)matches.push(code[0]);}
+  }
+  if(matches.includes("IGC"))return "IGC";
+  if(matches.includes("IGP"))return "IGP";
+  if(matches.includes("IGL"))return "IGL";
+  if(matches.includes("IGM"))return "IGM";
+  // Compatibilidade com contratos legados da MESMA coleção, com tipo mas sem sigla.
+  if(c.contractKind==="service"){
+    const type=normalizeStatus(c.serviceType??c.tipoServico);
+    if(type==="both"||type==="preventive_cleaning"||/prevent.*limpez/.test(type))return "IGC";
+    if(type==="preventive"||type==="preventiva")return "IGP";
+    if(type==="cleaning"||type==="limpeza")return "IGL";
+  }
+  return null;
+}
+function contractCancelled(c){
+  if(c.deleted===true||c.excluido===true||c.cancelado===true)return true;
+  const st=normalizeStatus(c.statusContrato??c.contractStatus??c.status??c.situacao??"");
+  return /^(cancelad|excluid|deletad|anulad|rescindid)/.test(st);
+}
+function contractDate(c){
+  const doc=c.contrato&&typeof c.contrato==="object"?c.contrato:{};
+  // Para serviços: data informada no editor. Para monitoramento: data de geração.
+  // Não utilizar updatedAt antes de createdAt, para evitar mover contratos antigos de mês.
+  const service=c.contractKind==="service";
+  const values=service
+    ? [c.contractDate,c.dataContrato,c.dataVenda,c.soldAt,c.saleDate,c.createdAt,c.generatedAt,c.dataCriacao,c.criadoEm,c.created_at,c.timestamp,c.updatedAt]
+    : [c.dataVenda,c.soldAt,c.saleDate,c.dataFechamento,c.closedAt,c.acceptedAt,c.generatedAt,c.createdAt,c.dataAssinatura,c.signedAt,c.contractDate,c.dataContrato,c.planStart,c.date,c.data,c.dataCriacao,c.criadoEm,c.created_at,c.timestamp,c.updatedAt];
+  values.push(doc.dataVenda,doc.dataAssinatura,doc.dataContrato,doc.createdAt);
+  for(const value of values){const d=safeDate(value);if(d)return d;}
+  return null;
+}
+function contractAmount(c){
+  const doc=c.contrato&&typeof c.contrato==="object"?c.contrato:{};
+  const plan=c.plano&&typeof c.plano==="object"?c.plano:{};
+  const values=[c.valorTotal,c.totalContrato,c.valorContrato,c.contractValue,c.total,
+    c.valorVenda,c.valorFinal,c.amount,c.valor,c.price,c.preco,c.valorMensal,c.planPrice,
+    doc.valorTotal,doc.valorContrato,doc.valor,plan.valorTotal,plan.valorMensal,plan.price];
+  for(const value of values){const n=numberValue(value);if(Number.isFinite(n))return n;}
+  return 0;
+}
+function contractToSale(c){
+  const tag=contractTag(c);
+  if(!tag||contractCancelled(c))return null;
+  const date=contractDate(c);
+  if(!date)return null;
+  const customer=c.cliente&&typeof c.cliente==="object"?c.cliente:
+    (c.client&&typeof c.client==="object"?c.client:
+    (c.clientSnapshot||c.clienteSnapshot||c.customer||{}));
+  const person=c.nomeCliente??c.clientName??c.customerName??customer.nome??customer.name??c.clienteNome??
+    (typeof c.cliente==="string"?c.cliente:null)??c.nome??c.name??"Cliente";
+  const city=saleCity(c.cidade??c.city??customer.cidade??customer.city??c.endereco?.cidade??"Cidade não informada");
+  const address=c.endereco?.logradouro??c.address??customer.endereco??customer.address??"";
+  const kind=tag==="IGM"?"monitoring":tag==="IGP"?"preventive":tag==="IGL"?"cleaning":"both";
+  const label=tag==="IGM"?"Monitoramento":tag==="IGP"?"Preventiva":tag==="IGL"?"Limpeza":"Preventiva + Limpeza";
+  const id=String(c.id??c.token??c._key??c.number??c.codigoContrato??c.numeroContrato??`${person}-${date.getTime()}-${tag}`);
+  return {key:`contract-${id}-${tag}`,kind,label,name:String(person),seller:sellerName(c.clientSeller??c.vendedor??c.seller??c.representante??c.operator??c.createdBy??c.responsavelComercial),
+    amount:contractAmount(c),date,city,address:String(typeof address==="string"?address:""),region:saleRegion(city),paid:isPaidStatus(c.paymentStatus??c.statusPagamento),tag,source:"Contratos"};
+}
 function cleanText(v){return String(v||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim()}
 const REGION_POINTS={
   "Norte Catarinense":{x:61,y:23,color:"#9eea37"},
@@ -817,8 +1005,8 @@ function hashCode(v){let h=0;for(const ch of String(v||""))h=(Math.imul(31,h)+ch
 function staticCityCoords(cityRaw){const city=cleanText(cityRaw);for(const [name,coords] of Object.entries(CITY_COORDS)){if(city.includes(name))return coords}return null}
 function geocodeCacheKey(s){return cleanText([s.address,s.city,s.region].filter(Boolean).join(" | "))}
 function saleCoords(s,index=0){const cached=mapGeocodeCache[geocodeCacheKey(s)];let base=Array.isArray(cached)&&cached.length===2?cached:staticCityCoords(s.city);if(!base)base=REGION_COORDS[s.region]||REGION_COORDS["Outras regiões"];const h=Math.abs(hashCode(s.key||index));const angle=(h%360)*Math.PI/180;const ring=((h>>4)%5)*0.0028;return [base[0]+Math.sin(angle)*ring,base[1]+Math.cos(angle)*ring]}
-function markerKind(s){return s.kind==="monitoring"?"monitoring":s.kind==="cleaning"?"cleaning":"preventive"}
-function markerSvg(kind){if(kind==="monitoring")return `<svg viewBox="0 0 48 48"><rect x="15" y="7" width="18" height="34" rx="5" fill="none" stroke="currentColor" stroke-width="3"/><path d="M19 28l5-5 4 3 5-7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="36" r="1.8" fill="currentColor"/></svg>`;if(kind==="cleaning")return `<svg viewBox="0 0 48 48"><path d="M8 17h27l4 20H12L8 17z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M12 24h24M14 31h23M18 17l-2 20M27 17l2 20" fill="none" stroke="currentColor" stroke-width="2" opacity=".85"/><path d="M39 8l1.5 3.5L44 13l-3.5 1.5L39 18l-1.5-3.5L34 13l3.5-1.5L39 8z" fill="currentColor"/></svg>`;return `<svg viewBox="0 0 48 48"><path d="M31 8a10 10 0 0 0-10 13L8.5 33.5a4.2 4.2 0 0 0 6 6L27 27a10 10 0 0 0 13-10l-6 6-7-2-2-7 6-6z" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M32 31l7 7" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>`}
+function markerKind(s){return ["monitoring","preventive","cleaning","both"].includes(s.kind)?s.kind:"preventive"}
+function markerSvg(kind){if(kind==="both")return `<svg viewBox="0 0 48 48"><path d="M29 7a10 10 0 0 0-10 12L8 30a4 4 0 0 0 6 6l11-11a10 10 0 0 0 12-10l-6 5-6-3-2-5z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M37 29c2 3 5 7 5 10a6 6 0 0 1-12 0c0-3 4-8 6-10z" fill="none" stroke="currentColor" stroke-width="3"/></svg>`;if(kind==="monitoring")return `<svg viewBox="0 0 48 48"><rect x="15" y="7" width="18" height="34" rx="5" fill="none" stroke="currentColor" stroke-width="3"/><path d="M19 28l5-5 4 3 5-7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="36" r="1.8" fill="currentColor"/></svg>`;if(kind==="cleaning")return `<svg viewBox="0 0 48 48"><path d="M8 17h27l4 20H12L8 17z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M12 24h24M14 31h23M18 17l-2 20M27 17l2 20" fill="none" stroke="currentColor" stroke-width="2" opacity=".85"/><path d="M39 8l1.5 3.5L44 13l-3.5 1.5L39 18l-1.5-3.5L34 13l3.5-1.5L39 8z" fill="currentColor"/></svg>`;return `<svg viewBox="0 0 48 48"><path d="M31 8a10 10 0 0 0-10 13L8.5 33.5a4.2 4.2 0 0 0 6 6L27 27a10 10 0 0 0 13-10l-6 6-7-2-2-7 6-6z" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M32 31l7 7" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>`}
 function salePinHtml(kind){return `<span class="map-flag ${kind}" aria-hidden="true"></span>`}
 
 function saleRegion(cityRaw){
@@ -837,16 +1025,22 @@ function saleRegion(cityRaw){
 }
 function saleCity(v){return String(v||"Cidade não informada").trim()||"Cidade não informada"}
 
+// A aba CONTRATOS é a fonte da verdade quando há tags IGM/IGP/IGC.
 function getAllSales(){
+  if(contracts.length){
+    const sales=contracts.map(contractToSale).filter(Boolean);
+    if(sales.length)return sales.sort((a,b)=>b.date-a.date);
+  }
   const list=[];
   clients.filter(monitoringSale).forEach(c=>{
     const date=clientSaleDate(c); if(!date)return;
-    const city=saleCity(c.city); list.push({key:`m-${c.id}-${date.getTime()}`,kind:"monitoring",label:"Monitoramento",name:c.name||"Cliente",seller:sellerName(c.seller),amount:getPlanPrice(c),date,city,address:c.address||"",region:saleRegion(city),paid:c.paymentStatus==="paid"});
+    const city=saleCity(c.city||c.cidade);list.push({key:`m-${c.id}-${date.getTime()}`,kind:"monitoring",label:"Monitoramento",name:c.name||c.nome||"Cliente",seller:sellerName(c.seller||c.vendedor||c.representante),amount:getPlanPrice(c),date,city,address:c.address||c.endereco||"",region:saleRegion(city),paid:isPaidStatus(c.paymentStatus)});
   });
   jobs.filter(soldJob).forEach(j=>{
     const date=jobSaleDate(j); if(!date)return;
-    const kind=j.serviceType||"service";
-    const jc=jobClient(j),city=saleCity(jc.city); list.push({key:`j-${j.id}-${date.getTime()}`,kind,label:kind==="cleaning"?"Limpeza":kind==="preventive"?"Preventiva":"Preventiva + Limpeza",name:jobClientName(j),seller:sellerName(j.operator||j.createdBy||j.seller),amount:Number(j.amount)||0,date,city,address:jc.address||"",region:saleRegion(city),paid:j.paymentStatus==="paid"});
+    const kind=jobKind(j);if(!kind)return; // Sem tipo conhecido não presumir que a venda é preventiva + limpeza.
+    const jc=jobClient(j),city=saleCity(jc.city||jc.cidade);
+    list.push({key:`j-${j.id}-${date.getTime()}`,kind,label:kind==="cleaning"?"Limpeza":kind==="preventive"?"Preventiva":"Preventiva + Limpeza",name:jobClientName(j),seller:sellerName(j.operator||j.createdBy||j.seller||j.vendedor),amount:Number.isFinite(numberValue(j.amount??j.valor??j.total??j.price))?numberValue(j.amount??j.valor??j.total??j.price):0,date,city,address:jc.address||jc.endereco||"",region:saleRegion(city),paid:isPaidStatus(j.paymentStatus)});
   });
   return list.sort((a,b)=>b.date-a.date);
 }
@@ -862,8 +1056,9 @@ function periodSales(){
 function matchesService(s,filter=activeFilter){
   if(filter==="all")return true;
   if(filter==="monitoring")return s.kind==="monitoring";
-  if(filter==="preventive")return s.kind==="preventive"||s.kind==="both";
-  if(filter==="cleaning")return s.kind==="cleaning"||s.kind==="both";
+  if(filter==="preventive")return s.kind==="preventive";
+  if(filter==="cleaning")return s.kind==="cleaning";
+  if(filter==="both")return s.kind==="both";
   return true;
 }
 function matchesGlobal(s,{includeService=true,includeRegion=true}={}){
@@ -876,14 +1071,18 @@ function filteredSales(opts){return periodSales().filter(s=>matchesGlobal(s,opts
 function baseSalesForCategories(){return periodSales().filter(s=>matchesGlobal(s,{includeService:false}))}
 
 function serviceCounts(sales){
-  let monitoring=0,preventive=0,cleaning=0,revMon=0,revPrev=0,revClean=0;
+  // Categorias de contratos mutuamente exclusivas:
+  // IGM -> monitoramento | IGP -> preventiva | IGL -> limpeza | IGC -> ambos.
+  // Contratos IGC são uma venda única, com receita integral apenas em "both".
+  let monitoring=0,preventive=0,cleaning=0,both=0;
+  let revMon=0,revPrev=0,revClean=0,revBoth=0;
   sales.forEach(s=>{
     if(s.kind==="monitoring"){monitoring++;revMon+=s.amount}
     else if(s.kind==="preventive"){preventive++;revPrev+=s.amount}
     else if(s.kind==="cleaning"){cleaning++;revClean+=s.amount}
-    else if(s.kind==="both"){preventive++;cleaning++;revPrev+=s.amount/2;revClean+=s.amount/2}
+    else if(s.kind==="both"){both++;revBoth+=s.amount}
   });
-  return{monitoring,preventive,cleaning,revMon,revPrev,revClean};
+  return{monitoring,preventive,cleaning,both,revMon,revPrev,revClean,revBoth};
 }
 
 function animateNumber(el,target,formatter=money){
@@ -899,26 +1098,30 @@ function setBar(id,value,max){$(id).style.width=`${max?Math.max(value?5:0,value/
 function render(){
   const sales=filteredSales();
   const last=getMonthSales(prevMonthKey()).filter(s=>matchesGlobal(s));
-  const [py,pm]=TARGET_MONTH.split("-").map(Number);
+  const [py,pm]=currentKey().split("-").map(Number);
   const periodName=new Intl.DateTimeFormat("pt-BR",{month:"long",year:"numeric"}).format(new Date(py,pm-1,1));
   const periodLabel=document.getElementById("periodLabel"); if(periodLabel)periodLabel.textContent=`${periodName} · até hoje`;
+  const monthOption=$("periodFilter")?.querySelector('option[value="month"]');if(monthOption)monthOption.textContent=periodName.charAt(0).toUpperCase()+periodName.slice(1);
   const revenue=sales.reduce((a,s)=>a+s.amount,0);
   const categorySales=baseSalesForCategories();
   const categoryRevenue=categorySales.reduce((a,s)=>a+s.amount,0);
   const mix=serviceCounts(categorySales);
-  const maxRevenue=Math.max(mix.revMon,mix.revPrev,mix.revClean,1);
+  const maxRevenue=Math.max(mix.revMon,mix.revPrev,mix.revClean,mix.revBoth,1);
 
   animateNumber($("monthRevenue"),revenue);
-  const [periodYear,periodMonth]=TARGET_MONTH.split("-").map(Number);const periodDate=new Date(periodYear,periodMonth-1,1);$("monthSummary").textContent=`${sales.length} vendas realizadas até agora · ${new Intl.DateTimeFormat("pt-BR",{month:"long",year:"numeric"}).format(periodDate)}`;
+  const [periodYear,periodMonth]=currentKey().split("-").map(Number);const periodDate=new Date(periodYear,periodMonth-1,1);$("monthSummary").textContent=`${sales.length} vendas realizadas até agora · ${new Intl.DateTimeFormat("pt-BR",{month:"long",year:"numeric"}).format(periodDate)}`;
   animateInt($("salesCount"),sales.length);
   animateNumber($("avgTicket"),sales.length?revenue/sales.length:0);
   const delta=last.length?((sales.length-last.length)/last.length)*100:(sales.length?100:0);
   $("salesVsLast").innerHTML=`<span style="color:${delta>=0?'var(--success)':'var(--orange)'}">${delta>=0?'▲':'▼'} ${Math.abs(delta).toFixed(0)}%</span> vs mês anterior`;
 
-  const activePlans=clients.filter(c=>c.planActive!==false&&c.planEnd&&new Date(c.planEnd)>=new Date());
-  animateNumber($("mrr"),activePlans.reduce((a,c)=>a+getPlanPrice(c)/12,0));
-  const pending=jobs.filter(j=>j.approved&&j.paymentStatus!=="paid").length;
-  const executing=jobs.filter(j=>(j.serviceOrderNumber&&j.approved&&j.paymentStatus==="paid"&&!j.completedAt)||j.status==="executing").length;
+  const activePlans=clients.filter(c=>monitoringSale(c)&&(!c.planEnd||!safeDate(c.planEnd)||safeDate(c.planEnd)>=new Date()));
+  // IGM aparece como contrato fechado; valor total pode abranger 12 meses.
+  // Não estimar recorrência de contratos sem campo de mensalidade.
+  const mrrContracts=contracts.map(c=>contractTag(c)==="IGM"&&!contractCancelled(c)?numberValue(c.valorMensal??c.monthlyPrice??c.plano?.valorMensal):NaN).filter(Number.isFinite);
+  animateNumber($("mrr"),mrrContracts.length?mrrContracts.reduce((a,b)=>a+b,0):activePlans.reduce((a,c)=>a+getPlanPrice(c)/12,0));
+  const pending=jobs.filter(j=>soldJob(j)&&!isPaidStatus(j.paymentStatus)&&!j.completedAt).length;
+  const executing=jobs.filter(j=>normalizeStatus(j.status).includes("execut")||(j.serviceOrderNumber&&soldJob(j)&&isPaidStatus(j.paymentStatus)&&!j.completedAt)).length;
   animateInt($("inExecution"),executing); $("pendingText").textContent=`${pending} aguardando pagamento`;
 
   renderTodayPerformance();
@@ -926,12 +1129,13 @@ function render(){
   updateCategory("Monitoring",mix.monitoring,mix.revMon,categoryRevenue,maxRevenue);
   updateCategory("Preventive",mix.preventive,mix.revPrev,categoryRevenue,maxRevenue);
   updateCategory("Cleaning",mix.cleaning,mix.revClean,categoryRevenue,maxRevenue);
+  updateCategory("Both",mix.both,mix.revBoth,categoryRevenue,maxRevenue);
 
   const pct=goal>0?Math.min(999,revenue/goal*100):0;
   $("goalPct").textContent=`${pct.toFixed(0)}%`; $("goalLabel").textContent=money(goal); $("goalRing").style.setProperty("--pct",`${Math.min(100,pct)*3.6}deg`);
 
   renderTrend(); renderRanking(); renderFeed(); renderMap(); renderLastSale(); populateFilters(); updateFilterNote();
-  $("lastSync").textContent=`Última sincronização: ${new Date().toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit",second:"2-digit"})}`;
+  $("lastSync").textContent=lastLiveUpdate?`Última leitura Firebase: ${lastLiveUpdate.toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit",second:"2-digit"})}`:"Firebase: aguardando sincronização";
   detectNewSale();
 }
 
@@ -945,6 +1149,7 @@ function renderTodayPerformance(){
   animateInt($("todayMonitoring"),mix.monitoring);
   animateInt($("todayPreventive"),mix.preventive);
   animateInt($("todayCleaning"),mix.cleaning);
+  animateInt($("todayBoth"),mix.both);
   const last=sales.slice().sort((a,b)=>b.date-a.date)[0];
   $("todaySummary").textContent=last
     ? `${sales.length} venda${sales.length===1?"":"s"} hoje · última: ${last.name} às ${last.date.toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit"})}`
@@ -965,7 +1170,7 @@ function renderTrend(){
   const vals=days.map(d=>all.filter(s=>s.date.toDateString()===d.toDateString()).reduce((a,s)=>a+s.amount,0));
   const max=Math.max(...vals,1);
   let c1="var(--lime-soft)",c2="var(--lime)";
-  if(activeFilter==="preventive"){c1="#eef2f7";c2="var(--steel-dark)"} if(activeFilter==="cleaning"){c1="#9ed0ff";c2="var(--blue)"}
+  if(activeFilter==="preventive"){c1="#eef2f7";c2="var(--steel-dark)"} if(activeFilter==="cleaning"){c1="#9ed0ff";c2="var(--blue)"} if(activeFilter==="both"){c1="#a5fff0";c2="#32ddc3"}
   $("trendChart").innerHTML=days.map((d,i)=>`<div class="chart-col"><div class="chart-value">${vals[i]?compact(vals[i]):''}</div><div class="chart-bar" style="height:${Math.max(vals[i]?9:3,vals[i]/max*86)}%;--chart-color:${c1};--chart-color-2:${c2}"></div><div class="chart-label">${new Intl.DateTimeFormat('pt-BR',{weekday:'short'}).format(d).replace('.','')}</div></div>`).join("");
   $("weekTotal").textContent=money(vals.reduce((a,b)=>a+b,0));
 }
@@ -986,7 +1191,7 @@ function renderFeed(){
 
 function formatWhen(d){const now=new Date();const same=d.toDateString()===now.toDateString();return same?`Hoje ${d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})}`:d.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'})}
 function updateFilterNote(){
-  const labels={all:"Todos os serviços",monitoring:"Monitoramento",preventive:"Preventivas",cleaning:"Limpeza"};
+  const labels={all:"Todos os serviços",monitoring:"Monitoramento",preventive:"Preventivas",cleaning:"Limpeza",both:"Preventivas + Limpezas"};
   const sales=filteredSales();
   const bits=[labels[activeFilter],sellerFilter!=="all"?sellerFilter:null,regionFilter!=="all"?regionFilter:null].filter(Boolean);
   $("filterNote").textContent=`Exibindo: ${bits.join(" · ")}`;
@@ -1174,7 +1379,7 @@ function renderMap(){
   const groups=new Map();sales.forEach(s=>{const r=s.region||"Outras regiões",g=groups.get(r)||{amount:0,count:0};g.amount+=s.amount;g.count++;groups.set(r,g)});
   const total=sales.reduce((a,b)=>a+b.amount,0),max=Math.max(...[...groups.values()].map(v=>v.amount),1);
   $("mapRevenue").textContent=money(total);$("mappedSales").textContent=sales.length;$("regionCount").textContent=`${groups.size} regi${groups.size===1?'ão':'ões'}`;
-  const mix=serviceCounts(sales);$("mapMonitoring").textContent=mix.monitoring;$("mapPreventive").textContent=mix.preventive;$("mapCleaning").textContent=mix.cleaning;
+  const mix=serviceCounts(sales);$("mapMonitoring").textContent=mix.monitoring;$("mapPreventive").textContent=mix.preventive;$("mapCleaning").textContent=mix.cleaning;$("mapBoth").textContent=mix.both;
   const rows=[...groups.entries()].sort((a,b)=>b[1].amount-a[1].amount);$("regionList").innerHTML=rows.length?rows.slice(0,7).map(([name,v])=>`<div class="region-row" data-region="${esc(name)}"><div><strong>${esc(name)}</strong><span>${v.count} venda${v.count===1?'':'s'} · ${((v.amount/Math.max(total,1))*100).toFixed(0)}% do faturamento</span></div><div class="region-value">${money(v.amount)}</div><div class="region-bar"><i style="width:${Math.max(3,v.amount/max*100)}%"></i></div></div>`).join(''):'<div class="total-sub">Nenhuma venda neste filtro.</div>';
   const cityMap=new Map();sales.forEach(s=>{const c=s.city||'Cidade não informada',v=cityMap.get(c)||{amount:0,count:0};v.amount+=s.amount;v.count++;cityMap.set(c,v)});$("cityCloud").innerHTML=[...cityMap.entries()].sort((a,b)=>b[1].amount-a[1].amount).slice(0,10).map(([c,v])=>`<span class="city-chip"><b>${esc(c)}</b> · ${v.count} · ${compact(v.amount)}</span>`).join('');
   document.querySelectorAll('.region-row').forEach(el=>el.addEventListener('click',()=>{regionFilter=el.dataset.region;$("regionFilter").value=regionFilter;render()}));
@@ -1190,7 +1395,7 @@ function applyFilter(filter){
 
 function detectNewSale(){
   const all=getAllSales();const keys=new Set(all.map(s=>s.key));
-  if(!clientsLoaded||!jobsLoaded)return;
+  if(!contractsLoaded && (!clientsLoaded||!jobsLoaded))return;
   if(!snapshotInitialized){lastSnapshotKeys=keys;snapshotInitialized=true;return}
   const fresh=all.filter(s=>!lastSnapshotKeys.has(s.key));lastSnapshotKeys=keys;
   if(!fresh.length)return;
@@ -1207,14 +1412,14 @@ function showNextSaleAlert(){
   const overlay=$("saleCelebration"),card=$("saleCelebrationCard");
   const kind=s.kind==="monitoring"?"monitoring":s.kind==="cleaning"?"cleaning":s.kind==="both"?"both":"preventive";
   card.className=`sale-celebration-card ${kind}`;
-  $("saleCelebrationIcon").innerHTML=markerSvg(kind==="both"?"preventive":kind);
+  $("saleCelebrationIcon").innerHTML=markerSvg(kind);
   $("saleCelebrationService").textContent=s.label||({monitoring:"Monitoramento",preventive:"Preventiva",cleaning:"Limpeza",both:"Preventiva + Limpeza"}[kind]||"Venda");
   $("saleCelebrationClient").textContent=s.name||"Cliente";
   $("saleCelebrationCity").textContent=s.city||"Cidade não informada";
   $("saleCelebrationSeller").textContent=`Vendedor: ${s.seller||"Não informado"}`;
   $("saleCelebrationValue").innerHTML=`<small>Valor da venda</small>${money2(s.amount)}`;
   overlay.classList.remove("show");void overlay.offsetWidth;overlay.classList.add("show");overlay.setAttribute("aria-hidden","false");
-  const catCard=document.querySelector(`.category-card.${kind==="monitoring"?"monitoring":kind==="cleaning"?"cleaning":"preventive"}`);if(catCard){catCard.classList.remove("flash");void catCard.offsetWidth;catCard.classList.add("flash")}
+  const catCard=document.querySelector(`.category-card.${kind}`);if(catCard){catCard.classList.remove("flash");void catCard.offsetWidth;catCard.classList.add("flash")}
   // Sem som: o alerta é 100% visual. Pausa a rotação das telas durante os 30 segundos.
   clearInterval(autoTimer);$("sceneProgressBar")?.classList.remove("running");
   clearInterval(saleCountdownTimer);clearTimeout(saleAlertTimer);
@@ -1325,7 +1530,7 @@ async function start(){
   auth=authApi.getAuth(app);
   db=dbApi.getDatabase(app,serviceConfig.databaseURL);
   authApi.onAuthStateChanged(auth,async user=>{
-    if(!user){showLogin();return}
+    if(!user){unsubscribeDataSources();showLogin();return}
     try{
       const profileSnap=await dbApi.get(dbApi.ref(db,`users/${user.uid}`));
       if(profileSnap.exists() && profileSnap.val()?.active===false){
@@ -1338,36 +1543,204 @@ async function start(){
     subscribe();
   });
 }
+// Aceita coleções por IDs, arrays ou contêineres (ex.: /monitoramento/clientes).
+// Não trata uma pasta como venda quando ela só contém outras coleções.
 function rowsFromSnapshot(snap){
-  const raw=snap.exists()?snap.val():{};
-  if(Array.isArray(raw))return raw.map((v,i)=>v&&typeof v==="object"?{id:String(i),...v}:null).filter(Boolean);
-  return Object.entries(raw||{}).map(([id,v])=>({id,...(v||{})}));
-}
-function subscribe(){
-  dbApi.onValue(dbApi.ref(db,"settings/plans"),snap=>{
-    const raw=snap.exists()?snap.val():null;
-    if(raw){
-      const cpf=Number(raw?.cpf?.price),cnpj=Number(raw?.cnpj?.price);
-      planSettings={
-        cpf:{price:Number.isFinite(cpf)&&cpf>=0?cpf:120},
-        cnpj:{price:Number.isFinite(cnpj)&&cnpj>=0?cnpj:350}
-      };
-      render();
+  const root=snap.exists()?snap.val():null;
+  if(!root||typeof root!=="object")return [];
+  const found=[];
+  const fieldNames=new Set(["name","nome","cliente","client","customer","clientSnapshot", "clienteSnapshot",
+    "serviceType","tipoServico","servico","service","plano","plan","planActive","planoAtivo",
+    "valor","amount","price","status","situacao","contrato","contractStatus","createdAt", "dataCriacao", "dataCadastro",
+    "tag","tags","sigla","number","contractKind","clientName","clientSeller","codigoContrato","numeroContrato","tipoContrato","modeloContrato","dataContrato","contractDate", "dataAssinatura","generatedAt"]);
+  function descend(v,key,depth){
+    if(v==null||typeof v!=="object"||depth>6||found.length>=10000)return;
+    if(Array.isArray(v)){
+      v.forEach((item,i)=>descend(item,String(i),depth+1));
+      return;
     }
-  },e=>console.warn("Configuração de planos não carregada; usando valores padrão.",e));
-  dbApi.onValue(dbApi.ref(db,"clients"),snap=>{
-    clients=rowsFromSnapshot(snap);
-    clientsLoaded=true;
-    $("liveText").textContent=`Base real · ${clients.length} clientes`;
-    render();
-  },connectionError);
-  dbApi.onValue(dbApi.ref(db,"maintenanceJobs"),snap=>{
-    jobs=rowsFromSnapshot(snap);
-    jobsLoaded=true;
-    render();
-  },connectionError);
+    const keys=Object.keys(v);
+    if(keys.some(k=>fieldNames.has(k)) || (depth>=2 && keys.length && keys.every(k=>v[k]===null||typeof v[k]!=="object"))){
+      found.push({...v,id:String(v.id??key)});return;
+    }
+    for(const [childKey,childValue] of Object.entries(v))descend(childValue,childKey,depth+1);
+  }
+  descend(root,"root",0);
+  return found;
 }
-function connectionError(e){$("liveText").textContent="Falha na base real";$("loginMsg").textContent=e?.message||"Erro de conexão com o Realtime Database"}
+function normalizeClientRecord(c){
+  const plan=c.plan&&typeof c.plan==="object"?c.plan:(c.plano&&typeof c.plano==="object"?c.plano:(c.planoMonitoramento&&typeof c.planoMonitoramento==="object"?c.planoMonitoramento:{}));
+  const planStatus=c.planStatus??c.statusPlano??c.statusContrato??c.contractStatus??plan.status;
+  const status=normalizeStatus(planStatus??c.status);
+  const active=c.planActive??c.planoAtivo??c.monitoringActive??c.monitoramentoAtivo??plan.active;
+  const hasPlanFields=active!==undefined||planStatus!==undefined||c.planStart!==undefined||c.planActivatedAt!==undefined||c.dataInicio!==undefined||c.dataAtivacao!==undefined||Object.keys(plan).length>0;
+  const isActive=active===true||approvedFlag(active)||(hasPlanFields&&["active","ativo","ativa","vigente","contratado","contratada","assinado","assinada","fechado","fechada","aprovado","aprovada"].includes(status));
+  const explicitInactive=active===false||["inactive","inativo","inativa","cancelado","cancelada","suspenso","suspensa"].includes(status);
+  return {...c,name:c.name??c.nome??c.clientName??c.nomeCliente??c.customerName,
+    city:c.city??c.cidade??c.endereco?.cidade??c.address?.city,
+    seller:c.seller??c.vendedor??c.representante??c.createdBy,
+    planActive:explicitInactive?false:isActive,
+    planActivatedAt:c.planActivatedAt??c.activatedAt??c.ativadoEm??c.dataAtivacao??c.dataAssinatura??plan.activatedAt,
+    planStart:c.planStart??c.dataInicio??c.inicioPlano??plan.startDate,
+    planEnd:c.planEnd??c.dataFim??plan.endDate,
+    planPrice:c.planPrice??c.valorPlano??c.planoValor??c.monthlyPrice??c.valorMensal??plan.price,
+    createdAt:c.createdAt??c.dataCadastro??c.created_at??c.dataCriacao};
+}
+function normalizeJobRecord(j){
+  const client=j.clientSnapshot??j.clienteSnapshot??(typeof j.cliente==="object"?j.cliente:null);
+  return {...j,serviceType:j.serviceType??j.tipoServico??j.tipo_servico??j.servico??j.service??j.category??j.categoria,
+    clientId:j.clientId??j.clienteId,
+    clientSnapshot:client??j.clientSnapshot,
+    status:j.status??j.situacao??j.statusContrato,
+    paymentStatus:j.paymentStatus??j.situacaoPagamento,
+    approved:j.approved??j.aprovado,
+    approvedAt:j.approvedAt??j.dataAprovacao??j.dataFechamento,
+    amount:j.amount??j.valor??j.valorTotal??j.total??j.price,
+    createdAt:j.createdAt??j.dataCriacao??j.created_at??j.criadoEm};
+}
+const DATA_SOURCES_KEY="group-tv-firebase-public-contracts-v5";
+// Caminhos conferidos diretamente no HTML do CRM IG Energia.
+// Contratos IGM, IGP, IGC e IGL são gravados na mesma rota /publicContracts.
+const DATA_SOURCES_DEFAULTS={
+  contracts:"publicContracts",
+  clients:"clients",
+  jobs:"maintenanceJobs"
+};
+let dataSources={...DATA_SOURCES_DEFAULTS};
+try{
+  const stored=JSON.parse(localStorage.getItem(DATA_SOURCES_KEY)||"null");
+  if(stored&&typeof stored==="object"){
+    for(const group of ["contracts","clients","jobs"]){
+      const value=String(stored[group]||"").trim();
+      if(value)dataSources[group]=value;
+    }
+    // publicContracts nunca pode desaparecer da leitura principal em uma migração.
+    dataSources.contracts=["publicContracts",...String(dataSources.contracts).split(/[,;\n]/).map(v=>v.trim())].filter(Boolean).filter((v,i,a)=>a.indexOf(v)===i).join(",");
+  }
+}catch{}
+let dbListeners=[],sourceEpoch=0;
+let sourceState={contracts:new Map(),clients:new Map(),jobs:new Map()};
+let sourceSelection={contracts:"",clients:"",jobs:""};
+let sourceStatus={contracts:{kind:"loading",message:"Conectando..."},clients:{kind:"loading",message:"Conectando..."},jobs:{kind:"loading",message:"Conectando..."}};
+let lastLiveUpdate=null;
+function sourcePaths(group){
+  return [...new Set(String(dataSources[group]||DATA_SOURCES_DEFAULTS[group]).split(/[,;\n]/).map(s=>s.trim().replace(/^\/+|\/+$/g,"")).filter(s=>s&&!/[.#$\[\]]/.test(s)))].slice(0,16);
+}
+function showSourceStatus(){
+  const config=[
+    ["contracts","contractsDataStatus","Contratos (IGM / IGP / IGC / IGL)"],
+    ["clients","monitorDataStatus","Monitoramento (alternativo)"],
+    ["jobs","jobsDataStatus","Serviços (alternativo)"]
+  ];
+  for(const [group,id,label] of config){
+    const el=$(id),info=sourceStatus[group];if(!el)continue;
+    el.className=`source-tag ${info.kind}`;
+    el.innerHTML=`<i></i> ${label}: ${esc(info.message)}`;
+    el.title=info.detail||"";
+  }
+  const details=$("dataSourceDetails");
+  if(details)details.textContent=`Firebase ${serviceConfig.projectId} | Contratos: ${sourceStatus.contracts.detail||sourceStatus.contracts.message} | Monitoramento alternativo: ${sourceStatus.clients.detail||sourceStatus.clients.message} | Serviços alternativos: ${sourceStatus.jobs.detail||sourceStatus.jobs.message}`;
+  const hint=$("dataSourceHint");
+  if(hint)hint.textContent=lastLiveUpdate?`Contratos / Firebase · última leitura: ${lastLiveUpdate.toLocaleTimeString("pt-BR")}`:"Firebase · aguardando contratos";
+}
+function sourceRecognizedCount(group,records){
+  if(group==="contracts")return records.filter(c=>contractToSale(c)).length;
+  if(group==="clients")return records.map(normalizeClientRecord).filter(monitoringSale).length;
+  return records.map(normalizeJobRecord).filter(j=>soldJob(j)&&jobKind(j)&&jobSaleDate(j)).length;
+}
+function refreshSource(group){
+  const rows=[...sourceState[group].entries()];
+  const ready=rows.filter(([,s])=>s.kind==="ok").map(([p,s])=>({path:p,records:s.rows,recognized:sourceRecognizedCount(group,s.rows)}));
+  ready.sort((a,b)=>b.recognized-a.recognized||b.records.length-a.records.length);
+  const chosen=ready[0];
+  const allDone=rows.length>0&&rows.every(([,s])=>s.kind!=="loading");
+  // Fonte oficial do CRM prevalece quando contém contratos reconhecíveis.
+  const preferred=group==="contracts"?ready.find(p=>p.path==="publicContracts"&&p.recognized>0):null;
+  const resolved=preferred||chosen;
+  const path=resolved?.path||"";
+  const records=resolved?.records||[];
+  if(sourceSelection[group]!==path){sourceSelection[group]=path;snapshotInitialized=false;}
+  if(group==="contracts"){
+    contracts=records;
+    // Basta carregar uma fonte de contratos para iniciar o detector de novas vendas.
+    contractsLoaded=!!resolved&&(records.length>0||allDone);
+    contractSourceMode=records.some(c=>contractToSale(c))?"contracts":"fallback";
+  }else if(group==="clients"){
+    clients=records.map(normalizeClientRecord);
+    clientsLoaded=!!chosen&&(records.length>0||allDone);
+  }else{
+    jobs=records.map(normalizeJobRecord);
+    jobsLoaded=!!chosen&&(records.length>0||allDone);
+  }
+  const authErrors=rows.filter(([,st])=>st.kind==="error");
+  if(resolved){
+    const recognized=resolved.recognized;
+    const kind=recognized?"ok":"empty";
+    const tagCounts=group==="contracts"?` · IGM ${records.filter(c=>contractTag(c)==="IGM"&&!contractCancelled(c)).length} / IGP ${records.filter(c=>contractTag(c)==="IGP"&&!contractCancelled(c)).length} / IGC ${records.filter(c=>contractTag(c)==="IGC"&&!contractCancelled(c)).length} / IGL ${records.filter(c=>contractTag(c)==="IGL"&&!contractCancelled(c)).length}`:"";
+    const inMonth=group==="contracts"?records.map(contractToSale).filter(Boolean).filter(c=>monthKey(c.date)===currentKey()).length:0;
+    const message=recognized?`${recognized} contratos · ${inMonth} neste mês · ${path}`:records.length?`${records.length} registros, sem vendas reconhecidas · ${path}`:`Sem registros · ${path}`;
+    sourceStatus[group]={kind,message,detail:`Fonte ${path} · ${records.length} registros · ${recognized} vendas reconhecidas${tagCounts}. `+
+      (group==="contracts"?"IGC: 1 venda exclusiva na categoria Preventivas + Limpezas, com valor integral e sem duplicação no faturamento. O filtro de período pode ocultar contratos antigos. ":"")+
+      (authErrors.length?`Outros caminhos com erro: ${authErrors.map(([p,st])=>`${p} (${st.message})`).join(", ")}`:"")};
+  }else if(allDone){
+    sourceStatus[group]={kind:"error",message:authErrors.length?"Acesso negado ou fonte indisponível":"Nenhuma fonte disponível",
+      detail:authErrors.map(([p,st])=>`${p}: ${st.message}`).join(" | ")||"Confira os caminhos nas Configurações"};
+  }else{
+    sourceStatus[group]={kind:"loading",message:"Conectando...",detail:`Tentando: ${sourcePaths(group).join(", ")}`};
+  }
+  const live=$("liveText");
+  if(live){
+    const primary=sourceStatus.contracts;
+    const secondaryOk=sourceStatus.clients.kind==="ok"||sourceStatus.jobs.kind==="ok";
+    live.textContent=contractSourceMode==="contracts"?"Contratos sincronizados":primary.kind==="error"?"Falha na aba Contratos":secondaryOk?"Fontes alternativas ativas":"Aguardando contratos";
+  }
+  showSourceStatus();render();
+}
+function unsubscribeDataSources(){for(const unsub of dbListeners){try{unsub()}catch{}}dbListeners=[];sourceEpoch++;}
+function subscribe(){
+  if(!db||!dbApi||!auth?.currentUser)return;
+  unsubscribeDataSources();
+  const epoch=sourceEpoch;
+  sourceState={contracts:new Map(),clients:new Map(),jobs:new Map()};
+  sourceSelection={contracts:"",clients:"",jobs:""};
+  clients=[];jobs=[];contracts=[];contractsLoaded=false;contractSourceMode="fallback";clientsLoaded=false;jobsLoaded=false;snapshotInitialized=false;
+  lastLiveUpdate=null;
+  $("contractsPathInput").value=dataSources.contracts;
+  $("clientsPathInput").value=dataSources.clients;
+  $("jobsPathInput").value=dataSources.jobs;
+  try{
+    dbListeners.push(dbApi.onValue(dbApi.ref(db,"settings/plans"),snap=>{
+      if(epoch!==sourceEpoch)return;
+      const raw=snap.exists()?snap.val():null;
+      if(raw){
+        const cpf=numberValue(raw?.cpf?.price),cnpj=numberValue(raw?.cnpj?.price);
+        planSettings={cpf:{price:Number.isFinite(cpf)&&cpf>=0?cpf:120},cnpj:{price:Number.isFinite(cnpj)&&cnpj>=0?cnpj:350}};
+        render();
+      }
+    },e=>console.warn("Configuração de planos indisponível; usando valores padrão",e)));
+  }catch(e){console.warn("Falha ao abrir configuração de planos",e)}
+  for(const group of ["contracts","clients","jobs"]){
+    const paths=sourcePaths(group);
+    for(const path of paths){
+      sourceState[group].set(path,{kind:"loading",rows:[],message:"Aguardando resposta"});
+      try{
+        const unsubscribe=dbApi.onValue(dbApi.ref(db,path),snap=>{
+          if(epoch!==sourceEpoch)return;
+          sourceState[group].set(path,{kind:"ok",rows:rowsFromSnapshot(snap),message:"OK"});
+          lastLiveUpdate=new Date();refreshSource(group);
+        },e=>{
+          if(epoch!==sourceEpoch)return;
+          console.warn(`Firebase ${group} (${path})`,e);
+          sourceState[group].set(path,{kind:"error",rows:[],message:e?.code||e?.message||"Falha de leitura"});
+          refreshSource(group);
+        });
+        dbListeners.push(unsubscribe);
+      }catch(e){sourceState[group].set(path,{kind:"error",rows:[],message:e.message});}
+    }
+    refreshSource(group);
+  }
+}
+function connectionError(e){console.warn("Erro na base de dados",e);showSourceStatus()}
 function applyCrmAccess(){
   const url=String(crmAccess.url||DEFAULT_CRM_REPORT_URL).trim()||DEFAULT_CRM_REPORT_URL;
   const openLink=document.querySelector(".crm-report-open");
@@ -1392,7 +1765,7 @@ async function openCrmReport(){
   window.open(crmAccess.url||DEFAULT_CRM_REPORT_URL,"_blank","noopener");
   setTimeout(()=>syncCrmReport(),5000);
 }
-function showDashboard(){$("loginScreen").classList.add("hidden");$("dashboard").classList.remove("hidden");$("settings").classList.remove("hidden");$("goalInput").value=goal;syncDurationInputs();applyCrmAccess();sceneMode="overview";updateClock();render();setScene("overview",{restartTimer:false});setAutoMode(true)}
+function showDashboard(){$("loginScreen").classList.add("hidden");$("dashboard").classList.remove("hidden");$("settings").classList.remove("hidden");$("goalInput").value=goal;$("contractsPathInput").value=dataSources.contracts;$("clientsPathInput").value=dataSources.clients;$("jobsPathInput").value=dataSources.jobs;syncDurationInputs();applyCrmAccess();showSourceStatus();sceneMode="overview";updateClock();render();setScene("overview",{restartTimer:false});setAutoMode(true)}
 function showLogin(){$("dashboard").classList.add("hidden");$("settings").classList.add("hidden");$("loginScreen").classList.remove("hidden")}
 
 $("loginForm").addEventListener("submit",async e=>{e.preventDefault();$("loginMsg").textContent="Conectando...";try{await authApi.signInWithEmailAndPassword(auth,$("email").value.trim(),$("password").value);$("loginMsg").textContent=""}catch(err){$("loginMsg").textContent="Login não autorizado. Confira e-mail e senha."}});
@@ -1410,6 +1783,11 @@ $("applyDurations").addEventListener("click",()=>{
 $("saveCrmAccess")?.addEventListener("click",saveCrmAccess);
 $("openCrmReport")?.addEventListener("click",openCrmReport);
 $("syncCrmNow")?.addEventListener("click",()=>syncCrmReport());
+$("saveDataSources")?.addEventListener("click",()=>{
+  dataSources={contracts:$("contractsPathInput").value.trim()||DATA_SOURCES_DEFAULTS.contracts,clients:$("clientsPathInput").value.trim()||DATA_SOURCES_DEFAULTS.clients,jobs:$("jobsPathInput").value.trim()||DATA_SOURCES_DEFAULTS.jobs};
+  localStorage.setItem(DATA_SOURCES_KEY,JSON.stringify(dataSources));subscribe();
+});
+$("retryDataSources")?.addEventListener("click",()=>subscribe());
 $("crmReportBridge")?.addEventListener("load",()=>setTimeout(()=>syncCrmReport({quiet:true}),700));
 setInterval(()=>syncCrmReport({quiet:true}),60000);
 $("logoutBtn").addEventListener("click",()=>authApi.signOut(auth));
